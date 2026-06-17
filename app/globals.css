@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────
+   Manasflow Design System — Trust & Authority
+   Colors, typography, and spacing from design-system.md
+   Tailwind CSS v4 (CSS-first configuration)
+   ───────────────────────────────────────────────────────── */
+
+/* ── Light Mode (default) ── */
+:root {
+  --color-primary: #0F172A;
+  --color-on-primary: #FFFFFF;
+  --color-secondary: #334155;
+  --color-accent: #0369A1;
+  --color-background: #F8FAFC;
+  --color-foreground: #020617;
+  --color-muted: #E8ECF1;
+  --color-border: #E2E8F0;
+  --color-destructive: #DC2626;
+  --color-ring: #0F172A;
+}
+
+/* ── Dark Mode ── */
+.dark {
+  --color-primary: #FFFFFF;
+  --color-on-primary: #0F172A;
+  --color-secondary: #94A3B8;
+  --color-accent: #38BDF8;
+  --color-background: #020617;
+  --color-foreground: #F8FAFC;
+  --color-muted: #1E293B;
+  --color-border: #334155;
+  --color-destructive: #EF4444;
+  --color-ring: #CBD5E1;
+}
+
+/* ── Tailwind v4 Theme Tokens ── */
+@theme inline {
+  /* Colors — mapped 1:1 from design-system.md */
+  --color-primary: var(--color-primary);
+  --color-on-primary: var(--color-on-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-destructive: var(--color-destructive);
+  --color-ring: var(--color-ring);
+
+  /* Typography — Bodoni Moda (heading) + Jost (body) */
+  --font-heading: var(--font-bodoni-moda);
+  --font-sans: var(--font-jost);
+
+  /* Generous negative space additions */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
+}
+
+/* ── Base Styles ── */
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), serif;
+  color: var(--color-primary);
+  letter-spacing: -0.025em;
+}
