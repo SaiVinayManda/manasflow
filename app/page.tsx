@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import LeadChatbot from "@/components/LeadChatbot";
 import CaseStudies from "@/components/CaseStudies";
 import Services from "@/components/Services";
+import IndustrySolutions from "@/components/IndustrySolutions";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
@@ -27,6 +28,7 @@ export default function Home() {
       <LeadChatbot />
       <CaseStudies />
       <Services />
+      <IndustrySolutions />
       <FAQ />
       <Footer />
     </main>
