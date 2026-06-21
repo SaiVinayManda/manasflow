@@ -130,6 +130,11 @@ export default function Footer() {
               </div>
             </div>
 
+            {/* ── Internal AI Proof ── */}
+            <div className="mb-12 font-sans text-xs lg:text-sm font-light text-muted/60 leading-relaxed max-w-3xl">
+              Manasflow is powered by Manasflow. Our own lead qualification, client onboarding, and internal project management are entirely automated by our own digital employees.
+            </div>
+
             {/* ── Bottom Bar ── */}
             <div className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
               <div className="flex flex-col gap-2">
