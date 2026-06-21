@@ -105,10 +105,10 @@ export default function Services() {
             </div>
           </motion.div>
 
-          {/* Card 3: Enterprise AI Systems (Inverted design) */}
+          {/* Card 3: Enterprise AI Systems */}
           <motion.div
             variants={cardVariants}
-            className="lg:col-span-12 border border-border bg-primary text-on-primary p-10 lg:p-16 flex flex-col lg:flex-row gap-12 lg:gap-24 justify-between group cursor-pointer transition-colors duration-500 hover:bg-foreground"
+            className="lg:col-span-12 border border-border bg-on-primary p-10 lg:p-16 flex flex-col lg:flex-row gap-12 lg:gap-24 justify-between group cursor-pointer transition-colors duration-500 hover:bg-muted"
           >
             <div className="flex flex-col justify-between">
               <LayersIcon className="w-10 h-10 text-accent mb-16 lg:mb-24" />
@@ -116,7 +116,7 @@ export default function Services() {
                 <span className="font-sans text-sm font-medium tracking-[0.2em] text-secondary mb-4 block">
                   03
                 </span>
-                <h3 className="font-heading text-4xl lg:text-5xl font-bold mb-4">
+                <h3 className="font-heading text-4xl lg:text-5xl font-bold text-primary mb-4">
                   Enterprise AI Systems
                 </h3>
               </div>
@@ -124,10 +124,10 @@ export default function Services() {
 
             <div className="flex flex-col justify-between lg:w-1/2">
               <div className="flex justify-end hidden lg:flex">
-                <ArrowTopRightIcon className="w-8 h-8 text-secondary group-hover:text-on-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <ArrowTopRightIcon className="w-8 h-8 text-border group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
               <div className="lg:mt-auto">
-                <p className="font-sans text-xl lg:text-2xl font-light text-muted leading-relaxed">
+                <p className="font-sans text-xl lg:text-2xl font-light text-secondary leading-relaxed">
                   End-to-end RAG pipelines and full organizational data silo
                   integration for secure, department-wide intelligence.
                 </p>
