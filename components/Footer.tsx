@@ -103,13 +103,18 @@ export default function Footer() {
           </div>
 
           {/* ── Bottom Bar ── */}
-          <div className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
             <p className="font-sans text-xs font-light tracking-wide text-muted/50">
               © {currentYear} Manasflow. All rights reserved.
             </p>
             <div className="font-sans text-xs font-light tracking-widest uppercase text-muted/50">
               Engineered for operations
             </div>
+          </div>
+
+          {/* ── Entity-Rich Statement (AEO/SEO) ── */}
+          <div className="font-sans text-[11px] font-light text-muted/40 leading-relaxed max-w-5xl">
+            Manasflow is an AI automation agency specializing in custom AI agents, RAG-powered data systems, and workflow automation for SME operations managers in the mechanical, electrical, design, real estate, and digital media sectors.
           </div>
         </motion.div>
       </div>
