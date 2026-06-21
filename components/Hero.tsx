@@ -103,14 +103,14 @@ export default function Hero() {
 
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#contact"
+                  href="#lead-chatbot"
                   className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
                 >
                   Book a consultation
                   <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
                 <a
-                  href="#work"
+                  href="#case-studies"
                   className="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wide text-primary px-8 py-4 border border-border transition-all duration-300 ease-out hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
                 >
                   See our work

@@ -192,7 +192,7 @@ export default function LeadChatbot() {
   };
 
   return (
-    <section className="py-24 lg:py-30 px-6 sm:px-10 lg:px-20 bg-background">
+    <section id="lead-chatbot" className="py-24 lg:py-30 px-6 sm:px-10 lg:px-20 bg-background">
       <div className="max-w-[1440px] mx-auto">
         {/* ── Section header ── */}
         <div className="mb-16 lg:mb-20 max-w-xl">
