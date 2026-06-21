@@ -1,53 +1,54 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
-/* ── Animation orchestration ── */
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const slideUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring" as const,
-      damping: 30,
-      stiffness: 200,
-    },
-  },
-};
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const },
-  },
-};
-
-const lineGrow = {
-  hidden: { scaleY: 0 },
-  visible: {
-    scaleY: 1,
-    transition: {
-      duration: 1,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-      delay: 0.6,
-    },
-  },
-};
-
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
+  /* ── Animation orchestration ── */
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+        delayChildren: shouldReduceMotion ? 0 : 0.2,
+      },
+    },
+  };
+
+  const slideUp = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        damping: 30,
+        stiffness: 200,
+      },
+    },
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: shouldReduceMotion ? 0 : 0.8, ease: [0.25, 0.1, 0.25, 1] as const },
+    },
+  };
+
+  const lineGrow = {
+    hidden: { scaleY: shouldReduceMotion ? 1 : 0 },
+    visible: {
+      scaleY: 1,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 1,
+        ease: [0.25, 0.1, 0.25, 1] as const,
+        delay: shouldReduceMotion ? 0 : 0.6,
+      },
+    },
+  };
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Background — clean, no decoration */}
@@ -107,7 +108,7 @@ export default function Hero() {
                   className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
                 >
                   Book a consultation
-                  <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                 </a>
                 <a
                   href="#solutions"

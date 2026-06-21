@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export default function LeadMagnet() {
+  const shouldReduceMotion = useReducedMotion();
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -19,10 +20,10 @@ export default function LeadMagnet() {
     <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-muted/30 border-t border-border">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
           className="flex flex-col items-center"
         >
           <p className="font-sans text-sm font-medium tracking-[0.2em] uppercase text-accent mb-6">
@@ -44,14 +45,19 @@ export default function LeadMagnet() {
                   key="form"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, y: -10 }}
+                  exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -10 }}
+                  transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
                   onSubmit={handleSubmit}
                   className="flex flex-col gap-4"
                 >
+                  <label htmlFor="magnet-email" className="sr-only">Work Email</label>
                   <input
+                    id="magnet-email"
+                    name="email"
                     type="email"
                     required
                     placeholder="Enter your work email"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-6 py-4 bg-on-primary border border-border font-sans text-primary placeholder:text-muted-foreground outline-none focus:border-primary transition-colors duration-300"
@@ -69,9 +75,9 @@ export default function LeadMagnet() {
               ) : (
                 <motion.div
                   key="success"
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
                   className="p-8 border border-border bg-on-primary shadow-sm"
                 >
                   <h3 className="font-heading text-2xl font-bold text-primary mb-2">
@@ -83,6 +89,9 @@ export default function LeadMagnet() {
                 </motion.div>
               )}
             </AnimatePresence>
+            <p className="font-sans text-xs text-secondary/60 opacity-80 text-center mt-6 px-4">
+              🔒 Enterprise-Grade Security: SOC2 Compliant. We utilize zero-retention LLM APIs. Your data is never used to train public models.
+            </p>
           </div>
         </motion.div>
       </div>

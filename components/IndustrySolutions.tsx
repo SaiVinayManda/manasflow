@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   FileTextIcon,
   ClipboardIcon,
@@ -188,6 +188,7 @@ const solutionsData: CategoryData[] = [
 
 export default function IndustrySolutions() {
   const [activeTab, setActiveTab] = useState<string>(solutionsData[0].id);
+  const shouldReduceMotion = useReducedMotion();
 
   const activeCategory =
     solutionsData.find((cat) => cat.id === activeTab) || solutionsData[0];
@@ -230,6 +231,7 @@ export default function IndustrySolutions() {
                   aria-pressed={isActive}
                 >
                   <Icon
+                    aria-hidden="true"
                     className={`w-5 h-5 transition-colors duration-300 ${
                       isActive ? "text-accent" : "text-secondary group-hover:text-primary"
                     }`}
@@ -251,10 +253,10 @@ export default function IndustrySolutions() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -15 }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: [0.25, 0.1, 0.25, 1] as const }}
                 className="flex flex-col gap-6"
               >
                 {activeCategory.items.map((item, idx) => (

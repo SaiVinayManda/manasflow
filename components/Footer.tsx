@@ -1,44 +1,46 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Cross1Icon } from "@radix-ui/react-icons";
 
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
-};
-
-const modalOverlayVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.3 } },
-  exit: { opacity: 0, transition: { duration: 0.3 } },
-};
-
-const modalContentVariants = {
-  hidden: { opacity: 0, scale: 0.95, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { type: "spring" as const, damping: 25, stiffness: 300 }
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.95,
-    y: 20,
-    transition: { duration: 0.2 }
-  },
-};
-
 export default function Footer() {
+  const shouldReduceMotion = useReducedMotion();
+  
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.8,
+        ease: [0.25, 0.1, 0.25, 1] as const,
+      },
+    },
+  };
+
+  const modalOverlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: shouldReduceMotion ? 0 : 0.3 } },
+    exit: { opacity: 0, transition: { duration: shouldReduceMotion ? 0 : 0.3 } },
+  };
+
+  const modalContentVariants = {
+    hidden: { opacity: 0, scale: shouldReduceMotion ? 1 : 0.95, y: shouldReduceMotion ? 0 : 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { type: "spring" as const, damping: 25, stiffness: 300 }
+    },
+    exit: {
+      opacity: 0,
+      scale: shouldReduceMotion ? 1 : 0.95,
+      y: shouldReduceMotion ? 0 : 20,
+      transition: { duration: shouldReduceMotion ? 0 : 0.2 }
+    },
+  };
+
   const currentYear = new Date().getFullYear();
   const [activeModal, setActiveModal] = useState<"privacy" | "terms" | null>(null);
 
@@ -182,7 +184,7 @@ export default function Footer() {
                 className="absolute top-6 right-6 p-2 text-secondary hover:text-primary transition-colors duration-200"
                 aria-label="Close modal"
               >
-                <Cross1Icon className="w-5 h-5" />
+                <Cross1Icon className="w-5 h-5" aria-hidden="true" />
               </button>
 
               <h3 className="font-heading text-3xl font-bold text-primary mb-6">

@@ -1,20 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
-};
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function Team() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.8,
+        ease: [0.25, 0.1, 0.25, 1] as const,
+      },
+    },
+  };
+
   return (
     <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border">
       <div className="max-w-[1440px] mx-auto">

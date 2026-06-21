@@ -1,27 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
-};
+import { motion, useReducedMotion } from "framer-motion";
 
 const steps = [
   {
@@ -47,24 +26,47 @@ const steps = [
 ];
 
 export default function ProcessTimeline() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.2,
+      },
+    },
+  };
+
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.8,
+        ease: [0.25, 0.1, 0.25, 1] as const,
+      },
+    },
+  };
+
   return (
     <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border overflow-hidden">
       <div className="max-w-[1440px] mx-auto">
         <div className="mb-16 lg:mb-24">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
             className="font-sans text-sm font-medium tracking-[0.2em] uppercase text-accent mb-6"
           >
             Engagement Process
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] as const }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 0.1, ease: [0.25, 0.1, 0.25, 1] as const }}
             className="font-heading font-bold text-primary leading-[1.05]"
             style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
           >

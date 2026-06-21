@@ -1,28 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { StarFilledIcon } from "@radix-ui/react-icons";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
-};
 
 const testimonials = [
   {
@@ -43,6 +22,29 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.6,
+        ease: [0.25, 0.1, 0.25, 1] as const,
+      },
+    },
+  };
+
   return (
     <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border">
       <div className="max-w-[1440px] mx-auto">
@@ -73,7 +75,7 @@ export default function Testimonials() {
               <div>
                 <div className="flex gap-1 mb-8">
                   {[...Array(5)].map((_, i) => (
-                    <StarFilledIcon key={i} className="w-4 h-4 text-primary" />
+                    <StarFilledIcon key={i} className="w-4 h-4 text-primary" aria-hidden="true" />
                   ))}
                 </div>
                 <p className="font-sans text-lg font-light leading-relaxed text-primary mb-12">

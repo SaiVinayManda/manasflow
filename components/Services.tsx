@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   LightningBoltIcon,
   MagicWandIcon,
@@ -8,30 +8,31 @@ import {
   ArrowTopRightIcon,
 } from "@radix-ui/react-icons";
 
-/* ── Animation variants ── */
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring" as const,
-      damping: 30,
-      stiffness: 150,
-    },
-  },
-};
-
 export default function Services() {
+  const shouldReduceMotion = useReducedMotion();
+
+  /* ── Animation variants ── */
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        damping: 30,
+        stiffness: 150,
+      },
+    },
+  };
   return (
     <section
       id="services"
@@ -65,8 +66,8 @@ export default function Services() {
             className="lg:col-span-5 border border-border bg-on-primary p-10 lg:p-14 flex flex-col justify-between group cursor-pointer transition-colors duration-500 hover:bg-muted"
           >
             <div className="flex justify-between items-start mb-20 lg:mb-32">
-              <LightningBoltIcon className="w-8 h-8 text-accent" />
-              <ArrowTopRightIcon className="w-6 h-6 text-border group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <LightningBoltIcon className="w-8 h-8 text-accent" aria-hidden="true" />
+              <ArrowTopRightIcon className="w-6 h-6 text-border group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
             </div>
             <div>
               <span className="font-sans text-sm font-medium tracking-[0.2em] text-secondary mb-4 block">
@@ -88,8 +89,8 @@ export default function Services() {
             className="lg:col-span-7 border border-border bg-on-primary p-10 lg:p-14 flex flex-col justify-between group cursor-pointer transition-colors duration-500 hover:bg-muted"
           >
             <div className="flex justify-between items-start mb-20 lg:mb-32">
-              <MagicWandIcon className="w-8 h-8 text-accent" />
-              <ArrowTopRightIcon className="w-6 h-6 text-border group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <MagicWandIcon className="w-8 h-8 text-accent" aria-hidden="true" />
+              <ArrowTopRightIcon className="w-6 h-6 text-border group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
             </div>
             <div>
               <span className="font-sans text-sm font-medium tracking-[0.2em] text-secondary mb-4 block">
@@ -111,7 +112,7 @@ export default function Services() {
             className="lg:col-span-12 border border-border bg-on-primary p-10 lg:p-16 flex flex-col lg:flex-row gap-12 lg:gap-24 justify-between group cursor-pointer transition-colors duration-500 hover:bg-muted"
           >
             <div className="flex flex-col justify-between">
-              <LayersIcon className="w-10 h-10 text-accent mb-16 lg:mb-24" />
+              <LayersIcon className="w-10 h-10 text-accent mb-16 lg:mb-24" aria-hidden="true" />
               <div>
                 <span className="font-sans text-sm font-medium tracking-[0.2em] text-secondary mb-4 block">
                   03
@@ -124,7 +125,7 @@ export default function Services() {
 
             <div className="flex flex-col justify-between lg:w-1/2">
               <div className="flex justify-end hidden lg:flex">
-                <ArrowTopRightIcon className="w-8 h-8 text-border group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <ArrowTopRightIcon className="w-8 h-8 text-border group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
               </div>
               <div className="lg:mt-auto">
                 <p className="font-sans text-xl lg:text-2xl font-light text-secondary leading-relaxed">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   PaperPlaneIcon,
   LockClosedIcon,
@@ -87,6 +87,7 @@ export default function LeadChatbot() {
   const [isBookingUnlocked, setIsBookingUnlocked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const progress = Math.min((totalWords / WORD_THRESHOLD) * 100, 100);
 
@@ -250,8 +251,14 @@ export default function LeadChatbot() {
                   {messages.map((msg) => (
                     <motion.div
                       key={msg.id}
-                      layout="position"
-                      {...messageFade}
+                      layout={shouldReduceMotion ? false : "position"}
+                      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        transition: { type: "spring" as const, damping: 28, stiffness: 220 },
+                      }}
+                      exit={{ opacity: 0, transition: { duration: shouldReduceMotion ? 0 : 0.15 } }}
                       className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"
                         }`}
                     >
@@ -272,7 +279,10 @@ export default function LeadChatbot() {
             {/* Input area */}
             <div className="border-t border-border px-6 py-4">
               <div className="flex items-end gap-3">
+                <label htmlFor="chatbot-input" className="sr-only">Describe your workflow</label>
                 <textarea
+                  id="chatbot-input"
+                  name="challenge"
                   ref={textareaRef}
                   value={input}
                   onChange={handleTextareaChange}
@@ -294,7 +304,7 @@ export default function LeadChatbot() {
                   className="flex-shrink-0 p-2 text-accent transition-colors duration-200 disabled:text-border disabled:cursor-not-allowed hover:text-primary cursor-pointer"
                   aria-label="Send message"
                 >
-                  <PaperPlaneIcon className="w-[18px] h-[18px]" />
+                  <PaperPlaneIcon className="w-[18px] h-[18px]" aria-hidden="true" />
                 </button>
               </div>
 
@@ -346,11 +356,14 @@ export default function LeadChatbot() {
                     className="w-full flex items-center justify-center gap-3 font-sans font-medium text-sm tracking-wide px-8 py-4 transition-colors duration-300 bg-muted text-secondary cursor-not-allowed"
                     aria-label={`Share ${WORD_THRESHOLD - totalWords} more words to unlock booking`}
                   >
-                    <LockClosedIcon className="w-4 h-4" />
+                    <LockClosedIcon className="w-4 h-4" aria-hidden="true" />
                     {`${WORD_THRESHOLD - totalWords} words to unlock`}
                   </motion.button>
                 )}
               </AnimatePresence>
+              <p className="font-sans text-xs text-secondary/60 opacity-80 text-center mt-4 px-4">
+                🔒 Enterprise-Grade Security: SOC2 Compliant. We utilize zero-retention LLM APIs. Your data is never used to train public models.
+              </p>
             </div>
           </div>
         </div>
