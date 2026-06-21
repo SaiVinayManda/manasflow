@@ -8,6 +8,8 @@ import {
   LockOpen1Icon,
 } from "@radix-ui/react-icons";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { db } from "../lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 /* ── Types ── */
 interface Message {
@@ -17,7 +19,7 @@ interface Message {
 }
 
 /* ── Constants ── */
-const WORD_THRESHOLD = 300;
+const WORD_THRESHOLD = 10;
 const VIP_KEYWORDS = ["enterprise", "urgent"];
 
 const BOT_INTRO: Message[] = [
@@ -82,11 +84,25 @@ export default function LeadChatbot() {
   const [totalWords, setTotalWords] = useState(0);
   const [isVip, setIsVip] = useState(false);
   const [highestTier, setHighestTier] = useState(-1);
+  const [isBookingUnlocked, setIsBookingUnlocked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const isUnlocked = totalWords >= WORD_THRESHOLD || isVip;
   const progress = Math.min((totalWords / WORD_THRESHOLD) * 100, 100);
+
+  const saveLeadContext = async (contextText: string, isVipStatus: boolean) => {
+    try {
+      await addDoc(collection(db, "leads"), {
+        problem_context: contextText,
+        is_vip: isVipStatus,
+        status: "pending_calendar",
+        created_at: new Date().toISOString(),
+      });
+      setIsBookingUnlocked(true);
+    } catch (error) {
+      console.error("Error saving lead to Firestore:", error);
+    }
+  };
 
   /* Staggered intro messages */
   useEffect(() => {
@@ -140,12 +156,19 @@ export default function LeadChatbot() {
     /* Bot follow-up after a pause */
     const currentTier = getTier(newTotal);
 
-    setTimeout(() => {
+    setTimeout(async () => {
       if (newTotal >= WORD_THRESHOLD || vipHit) {
         setMessages((prev) => [
           ...prev,
           { id: `bot-unlock-${Date.now()}`, role: "bot", text: UNLOCK_RESPONSE },
         ]);
+        
+        const fullContext = messages
+          .filter((m) => m.role === "user")
+          .map((m) => m.text)
+          .join("\n") + "\n" + trimmed;
+          
+        await saveLeadContext(fullContext, isVip || vipHit);
       } else if (currentTier > highestTier && TIER_RESPONSES[currentTier]) {
         setMessages((prev) => [
           ...prev,
@@ -229,16 +252,14 @@ export default function LeadChatbot() {
                       key={msg.id}
                       layout="position"
                       {...messageFade}
-                      className={`flex ${
-                        msg.role === "user" ? "justify-end" : "justify-start"
-                      }`}
+                      className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"
+                        }`}
                     >
                       <div
-                        className={`max-w-[85%] sm:max-w-[75%] px-5 py-3.5 font-sans text-[14px] leading-relaxed ${
-                          msg.role === "user"
-                            ? "bg-accent text-on-primary"
-                            : "bg-muted text-foreground"
-                        }`}
+                        className={`max-w-[85%] sm:max-w-[75%] px-5 py-3.5 font-sans text-[14px] leading-relaxed ${msg.role === "user"
+                          ? "bg-accent text-on-primary"
+                          : "bg-muted text-foreground"
+                          }`}
                       >
                         {msg.text}
                       </div>
@@ -299,7 +320,7 @@ export default function LeadChatbot() {
             {/* CTA bar */}
             <div className="px-6 pb-6 pt-2">
               <AnimatePresence mode="wait">
-                {isUnlocked ? (
+                {isBookingUnlocked ? (
                   <motion.div
                     key="cal-embed"
                     initial={{ opacity: 0, y: 20 }}
@@ -309,8 +330,9 @@ export default function LeadChatbot() {
                     className="w-full h-[400px] border border-border bg-background mt-4 overflow-hidden"
                   >
                     <Cal
-                      calLink="rick/get-rick-rolled"
+                      calLink="manasflow/discovery" // Paste your exact slug here
                       style={{ width: "100%", height: "100%", overflow: "scroll" }}
+                      config={{ layout: "month_view" }}
                     />
                   </motion.div>
                 ) : (
