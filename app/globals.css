@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* ─────────────────────────────────────────────────────────
    Manasflow Design System — Trust & Authority

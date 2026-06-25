@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { ManasflowLogo } from "@/components/brand/ManasflowLogo";
 
 export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
@@ -61,9 +62,9 @@ export default function Footer() {
           >
             {/* ── Top section: Brand & Mission ── */}
             <div className="mb-24 lg:mb-32">
-              <h2 className="font-heading font-bold text-5xl lg:text-7xl tracking-tight mb-8">
-                Manasflow.
-              </h2>
+              <div className="mb-8">
+                <ManasflowLogo variant="footer" />
+              </div>
               <p className="font-sans text-xl sm:text-2xl font-light text-muted max-w-2xl leading-relaxed">
                 We sell digital employees for repetitive work.
                 <br />

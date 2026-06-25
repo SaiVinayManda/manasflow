@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, Jost } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import "./globals.css";
 
 const bodoniModa = Bodoni_Moda({
@@ -34,6 +35,7 @@ export default function RootLayout({
       className={`${bodoniModa.variable} ${jost.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SiteNavbar />
         {children}
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
       </body>
