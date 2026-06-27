@@ -32,9 +32,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${bodoniModa.variable} ${jost.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <SiteNavbar />
         {children}
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />

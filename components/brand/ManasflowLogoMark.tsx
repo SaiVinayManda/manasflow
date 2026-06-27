@@ -32,7 +32,7 @@ const variantConfig: Record<
   }
 > = {
   navbar: {
-    flowDuration: 3.4,
+    flowDuration: 5.6,
     pulseDuration: 2.4,
     hoverScale: 1.02,
     glowStrength: 0.12,
@@ -40,7 +40,7 @@ const variantConfig: Record<
     tiltY: 4,
   },
   hero: {
-    flowDuration: 2.4,
+    flowDuration: 5.6,
     pulseDuration: 1.8,
     hoverScale: 1.04,
     glowStrength: 0.2,
@@ -48,7 +48,7 @@ const variantConfig: Record<
     tiltY: 7,
   },
   loader: {
-    flowDuration: 1.8,
+    flowDuration: 5.6,
     pulseDuration: 1.35,
     hoverScale: 1,
     glowStrength: 0.18,
@@ -93,10 +93,10 @@ export function ManasflowLogoMark({
       whileHover={
         canHover && baseAnimated
           ? {
-              rotateX: cfg.tiltX,
-              rotateY: cfg.tiltY,
-              scale: cfg.hoverScale,
-            }
+            rotateX: cfg.tiltX,
+            rotateY: cfg.tiltY,
+            scale: cfg.hoverScale,
+          }
           : undefined
       }
       transition={{
@@ -185,11 +185,11 @@ export function ManasflowLogoMark({
               transition={
                 baseAnimated
                   ? {
-                      duration: hovered ? Math.max(1.4, cfg.flowDuration - 0.5) : cfg.flowDuration,
-                      repeat: Infinity,
-                      ease: "linear",
-                      delay: flow.delay,
-                    }
+                    duration: hovered ? Math.max(1.4, cfg.flowDuration - 0.5) : cfg.flowDuration,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: flow.delay,
+                  }
                   : undefined
               }
             />
@@ -213,19 +213,19 @@ export function ManasflowLogoMark({
                   animate={
                     baseAnimated
                       ? {
-                          scale: [0.9, hovered ? 1.58 : 1.45, 1],
-                          opacity: [0.1, hovered ? cfg.glowStrength + 0.14 : cfg.glowStrength, 0.12],
-                        }
+                        scale: [0.9, hovered ? 1.58 : 1.45, 1],
+                        opacity: [0.1, hovered ? cfg.glowStrength + 0.14 : cfg.glowStrength, 0.12],
+                      }
                       : { scale: 1, opacity: cfg.glowStrength }
                   }
                   transition={
                     baseAnimated
                       ? {
-                          duration: hovered ? Math.max(1.15, cfg.pulseDuration - 0.2) : cfg.pulseDuration,
-                          ease: "easeInOut",
-                          repeat: Infinity,
-                          delay: node.delay,
-                        }
+                        duration: hovered ? Math.max(1.15, cfg.pulseDuration - 0.2) : cfg.pulseDuration,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        delay: node.delay,
+                      }
                       : undefined
                   }
                   style={{ transformOrigin: `${node.cx}px ${node.cy}px` }}
@@ -245,11 +245,11 @@ export function ManasflowLogoMark({
                 transition={
                   baseAnimated
                     ? {
-                        duration: hovered ? Math.max(1.15, cfg.pulseDuration - 0.2) : cfg.pulseDuration,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                        delay: node.delay,
-                      }
+                      duration: hovered ? Math.max(1.15, cfg.pulseDuration - 0.2) : cfg.pulseDuration,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                      delay: node.delay,
+                    }
                     : undefined
                 }
                 style={{ transformOrigin: `${node.cx}px ${node.cy}px` }}

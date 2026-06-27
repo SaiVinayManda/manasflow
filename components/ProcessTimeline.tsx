@@ -50,7 +50,7 @@ export default function ProcessTimeline() {
   };
 
   return (
-    <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border overflow-hidden">
+    <section id="process" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border overflow-hidden scroll-mt-20">
       <div className="max-w-[1440px] mx-auto">
         <div className="mb-16 lg:mb-24">
           <motion.p

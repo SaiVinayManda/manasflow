@@ -85,6 +85,7 @@ export default function LeadChatbot() {
   const [isVip, setIsVip] = useState(false);
   const [highestTier, setHighestTier] = useState(-1);
   const [isBookingUnlocked, setIsBookingUnlocked] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -135,6 +136,12 @@ export default function LeadChatbot() {
     if (!trimmed) return;
 
     const newWords = countWords(trimmed);
+    if (newWords < 3) {
+      setError("Please provide a little more detail. A few more words help us prepare better.");
+      return;
+    }
+    setError(null);
+
     const newTotal = totalWords + newWords;
     const vipHit = containsVipKeyword(trimmed);
 
@@ -193,7 +200,7 @@ export default function LeadChatbot() {
   };
 
   return (
-    <section id="lead-chatbot" className="py-24 lg:py-30 px-6 sm:px-10 lg:px-20 bg-background">
+    <section id="lead-chatbot" className="py-24 lg:py-30 px-6 sm:px-10 lg:px-20 bg-background scroll-mt-20">
       <div className="max-w-[1440px] mx-auto">
         {/* ── Section header ── */}
         <div className="mb-16 lg:mb-20 max-w-xl">
@@ -301,7 +308,7 @@ export default function LeadChatbot() {
                   type="button"
                   onClick={handleSend}
                   disabled={!input.trim()}
-                  className="flex-shrink-0 p-2 text-accent transition-colors duration-200 disabled:text-border disabled:cursor-not-allowed hover:text-primary cursor-pointer"
+                  className="flex-shrink-0 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-accent transition-colors duration-200 disabled:text-border disabled:cursor-not-allowed hover:text-primary cursor-pointer"
                   aria-label="Send message"
                 >
                   <PaperPlaneIcon className="w-[18px] h-[18px]" aria-hidden="true" />
@@ -325,6 +332,19 @@ export default function LeadChatbot() {
                   {totalWords} / {WORD_THRESHOLD}
                 </span>
               </div>
+              
+              <AnimatePresence>
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="text-destructive font-sans text-xs mt-3"
+                  >
+                    {error}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* CTA bar */}

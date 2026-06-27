@@ -11,7 +11,7 @@ export default function ROICalculator() {
   const cost = hours * 4 * 35;
 
   return (
-    <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border">
+    <section id="roi-calculator" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border scroll-mt-20">
       <div className="max-w-[1440px] mx-auto flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -50,7 +50,7 @@ export default function ROICalculator() {
               step="5"
               value={hours}
               onChange={(e) => setHours(Number(e.target.value))}
-              className="w-full h-2 bg-muted rounded-full appearance-none cursor-pointer accent-primary mb-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-2 bg-muted rounded-full appearance-none cursor-pointer accent-primary mb-16 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-none"
               aria-label="Hours spent on manual data entry per week"
             />
 

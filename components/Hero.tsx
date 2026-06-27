@@ -70,7 +70,7 @@ export default function Hero() {
 
             <motion.h1
               variants={stagger}
-              className="font-heading font-bold leading-[0.92] tracking-tight"
+              className="font-heading font-bold leading-[1.05] tracking-tight"
               style={{ fontSize: "clamp(2.75rem, 6.5vw, 5.5rem)" }}
             >
               <motion.span variants={slideUp} className="block text-primary">

@@ -9,6 +9,7 @@ import {
   CubeIcon,
   LightningBoltIcon,
 } from "@radix-ui/react-icons";
+import { cn } from "@/lib/cn";
 
 type SolutionItem = {
   bottleneck: string;
@@ -186,6 +187,46 @@ const solutionsData: CategoryData[] = [
   },
 ];
 
+const SolutionCard = ({ item }: { item: SolutionItem }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="border border-border bg-on-primary p-6 md:p-8 lg:p-10 flex flex-col gap-4 group hover:border-accent/50 transition-colors duration-300">
+      <div className="flex items-start gap-4">
+        <span className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-destructive/80" />
+        <div>
+          <p className="font-sans text-xs font-semibold tracking-widest uppercase text-secondary mb-2">
+            The Bottleneck
+          </p>
+          <p className="font-sans text-base md:text-lg font-light text-primary leading-relaxed">
+            {item.bottleneck}
+          </p>
+        </div>
+      </div>
+
+      <div className="w-full h-px bg-border/50 my-2" />
+
+      <div className="flex items-start gap-4">
+        <span className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-accent" />
+        <div className="flex-1">
+          <p className="font-sans text-xs font-semibold tracking-widest uppercase text-accent mb-2">
+            Manasflow AI Solution
+          </p>
+          <p className={cn("font-sans text-base md:text-lg font-medium text-primary leading-relaxed", !isExpanded && "line-clamp-3 md:line-clamp-none")}>
+            {item.solution}
+          </p>
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="mt-2 text-sm font-medium text-accent md:hidden hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
+          >
+            {isExpanded ? "Read less" : "Read more"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function IndustrySolutions() {
   const [activeTab, setActiveTab] = useState<string>(solutionsData[0].id);
   const shouldReduceMotion = useReducedMotion();
@@ -194,7 +235,7 @@ export default function IndustrySolutions() {
     solutionsData.find((cat) => cat.id === activeTab) || solutionsData[0];
 
   return (
-    <section id="solutions" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border">
+    <section id="solutions" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border scroll-mt-20">
       <div className="max-w-[1440px] mx-auto">
         {/* ── Header ── */}
         <div className="mb-16 lg:mb-24">
@@ -260,36 +301,7 @@ export default function IndustrySolutions() {
                 className="flex flex-col gap-6"
               >
                 {activeCategory.items.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="border border-border bg-on-primary p-8 lg:p-10 flex flex-col gap-4 group hover:border-accent/50 transition-colors duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <span className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-destructive/80" />
-                      <div>
-                        <p className="font-sans text-xs font-semibold tracking-widest uppercase text-secondary mb-2">
-                          The Bottleneck
-                        </p>
-                        <p className="font-sans text-lg font-light text-primary leading-relaxed">
-                          {item.bottleneck}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="w-full h-px bg-border/50 my-2" />
-
-                    <div className="flex items-start gap-4">
-                      <span className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-accent" />
-                      <div>
-                        <p className="font-sans text-xs font-semibold tracking-widest uppercase text-accent mb-2">
-                          Manasflow AI Solution
-                        </p>
-                        <p className="font-sans text-lg font-medium text-primary leading-relaxed">
-                          {item.solution}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <SolutionCard key={idx} item={item} />
                 ))}
               </motion.div>
             </AnimatePresence>

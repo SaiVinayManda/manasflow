@@ -23,9 +23,40 @@ const fadeUpVariants = {
   },
 };
 
+type CaseStudy = {
+  workflow: string;
+  metric: string;
+  description: string;
+  metricLabel: string;
+};
+
+const caseStudies: CaseStudy[] = [
+  {
+    workflow: "AP Pipeline Automation",
+    metric: "90%",
+    metricLabel: "Reduction in Processing Time",
+    description:
+      "Eliminated manual invoice processing for a top-tier real estate firm, converting raw PDFs into structured ledger entries without human intervention.",
+  },
+  {
+    workflow: "Automated BOM Generation",
+    metric: "12k",
+    metricLabel: "Hours Saved Monthly",
+    description:
+      "Replaced manual 2D floor plan tracing with an AI vision system that instantly translates schematics into live-priced Bill of Materials.",
+  },
+  {
+    workflow: "Sales Lead Qualification",
+    metric: "3x",
+    metricLabel: "Increase in Lead Conversion",
+    description:
+      "Deployed a custom AI chatbot that aggressively pre-qualifies incoming traffic and books consultations, preventing high-value leads from going cold.",
+  },
+];
+
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background">
+    <section id="case-studies" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background scroll-mt-20">
       <div className="max-w-[1440px] mx-auto">
         {/* ── Header ── */}
         <div className="mb-16 lg:mb-24">
@@ -56,43 +87,40 @@ export default function CaseStudies() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {/* Card 1 */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="group flex flex-col justify-between border border-border bg-on-primary p-10 lg:p-14 hover:border-accent transition-colors duration-500"
-          >
-            <div className="mb-12 lg:mb-24">
-              <span className="font-heading text-6xl lg:text-7xl font-bold text-primary tracking-tighter tabular-nums block mb-4">
-                50+
-              </span>
-              <h3 className="font-sans text-xl lg:text-2xl font-bold text-primary">
-                Automations Deployed
-              </h3>
-            </div>
-            <p className="font-sans text-base lg:text-lg font-light leading-relaxed text-secondary group-hover:text-primary transition-colors duration-500">
-              Eliminated manual invoice processing for a real estate firm, reducing CRM phase transition time by 90%.
-            </p>
-          </motion.div>
+          {caseStudies.map((study, idx) => (
+            <motion.div
+              key={idx}
+              variants={fadeUpVariants}
+              className="group relative flex flex-col justify-between border border-border bg-on-primary p-8 lg:p-12 hover:border-accent transition-all duration-500 hover:shadow-lg overflow-hidden"
+            >
+              {/* Subtle hover background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          {/* Card 2 */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="group flex flex-col justify-between border border-border bg-on-primary p-10 lg:p-14 hover:border-accent transition-colors duration-500"
-          >
-            <div className="mb-12 lg:mb-24">
-              <span className="font-heading text-6xl lg:text-7xl font-bold text-primary tracking-tighter tabular-nums block mb-4">
-                12k
-              </span>
-              <h3 className="font-sans text-xl lg:text-2xl font-bold text-primary">
-                Hours Saved Monthly
-              </h3>
-            </div>
-            <p className="font-sans text-base lg:text-lg font-light leading-relaxed text-secondary group-hover:text-primary transition-colors duration-500">
-              Automated unstructured data extraction and ECAD file conversions for engineering workflows.
-            </p>
-          </motion.div>
+              <div className="relative z-10">
+                <div className="inline-flex items-center px-3 py-1 mb-8 border border-border bg-background">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mr-2" />
+                  <span className="font-sans text-[11px] font-semibold tracking-wider uppercase text-secondary">
+                    {study.workflow}
+                  </span>
+                </div>
+                
+                <div className="mb-8">
+                  <span className="font-heading text-5xl lg:text-6xl font-bold text-primary tracking-tighter tabular-nums block mb-2 group-hover:text-accent transition-colors duration-500">
+                    {study.metric}
+                  </span>
+                  <h3 className="font-sans text-lg lg:text-xl font-bold text-primary">
+                    {study.metricLabel}
+                  </h3>
+                </div>
+                
+                <p className="font-sans text-sm lg:text-base font-light leading-relaxed text-secondary group-hover:text-primary transition-colors duration-500">
+                  {study.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

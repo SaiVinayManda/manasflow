@@ -36,11 +36,10 @@ export default function BlogGrid({ posts }: { posts: PostMeta[] }) {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full border text-sm font-sans font-medium transition-colors ${
-              selectedCategory === category
+            className={`px-4 py-2 rounded-full border text-sm font-sans font-medium transition-colors ${selectedCategory === category
                 ? "bg-primary text-on-primary border-primary"
                 : "bg-transparent text-secondary border-border hover:border-primary hover:text-primary"
-            }`}
+              }`}
           >
             {category}
           </button>
@@ -64,7 +63,7 @@ export default function BlogGrid({ posts }: { posts: PostMeta[] }) {
                   <span className="inline-flex items-center rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent border border-accent/20">
                     {post.category}
                   </span>
-                  <p className="font-sans text-xs font-semibold tracking-widest uppercase text-muted-foreground">
+                  <p className="font-sans text-xs font-normal tracking-widest uppercase text-muted-foreground">
                     {post.date} • {post.readingTime}
                   </p>
                 </div>
@@ -85,7 +84,7 @@ export default function BlogGrid({ posts }: { posts: PostMeta[] }) {
           ))}
         </AnimatePresence>
       </motion.div>
-      
+
       {filteredPosts.length === 0 && (
         <div className="text-center py-20 text-secondary font-sans">
           No posts found for this category.

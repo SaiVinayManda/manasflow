@@ -7,17 +7,21 @@ export default function LeadMagnet() {
   const shouldReduceMotion = useReducedMotion();
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setIsSubmitted(true);
-      // In production, sync to CRM/Newsletter API here
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid work email address.");
+      return;
     }
+    setError(null);
+    setIsSubmitted(true);
+    // In production, sync to CRM/Newsletter API here
   };
 
   return (
-    <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-muted/30 border-t border-border">
+    <section id="lead-magnet" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-muted/30 border-t border-border scroll-mt-20">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
@@ -59,7 +63,10 @@ export default function LeadMagnet() {
                     placeholder="Enter your work email"
                     autoComplete="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (error) setError(null);
+                    }}
                     className="w-full px-6 py-4 bg-on-primary border border-border font-sans text-primary placeholder:text-muted-foreground outline-none focus:border-primary transition-colors duration-300"
                   />
                   <button
@@ -69,7 +76,7 @@ export default function LeadMagnet() {
                     Download PDF
                   </button>
                   <p className="font-sans text-xs font-light text-secondary mt-2">
-                    Zero spam. Unsubscribe at any time.
+                    {error ? <span className="text-destructive">{error}</span> : "Zero spam. Unsubscribe at any time."}
                   </p>
                 </motion.form>
               ) : (

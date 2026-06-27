@@ -85,7 +85,8 @@ export function ManasflowLogo({
       >
         <div
           className={cn(
-            "font-semibold tracking-[-0.04em] text-zinc-950 dark:text-zinc-50",
+            "font-semibold tracking-[-0.04em]",
+            variant === "navbar" ? "text-black" : "text-zinc-950 dark:text-zinc-50",
             variant === "hero" && "text-[2rem]",
             variant === "navbar" && "text-[1.35rem]",
             variant === "loader" && "text-[1.15rem]",

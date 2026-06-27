@@ -1,41 +1,72 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { PlusIcon, MinusIcon } from "@radix-ui/react-icons";
 
-// The typed data array
 type FAQItem = {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
+  schemaAnswer: string;
 };
 
 const faqData: FAQItem[] = [
   {
-    question:
-      "How do I automate manual data entry between my CRM and other tools?",
-    answer:
-      "Manasflow builds custom AI workflows that connect your CRM with other systems, automatically syncing and updating data without manual input.",
+    question: "How do I automate manual data entry between my CRM and other tools?",
+    answer: (
+      <>
+        <p className="mb-4">Manasflow builds custom AI workflows that connect your CRM with other systems, automatically syncing and updating data without manual input. This eliminates the "swivel chair" problem by:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>Extracting</strong> unstructured data from emails or PDFs.</li>
+          <li><strong>Transforming</strong> it into clean, standardized formats.</li>
+          <li><strong>Routing</strong> it instantly to your ERP, CRM, or accounting software.</li>
+        </ul>
+      </>
+    ),
+    schemaAnswer: "Manasflow builds custom AI workflows that connect your CRM with other systems, automatically syncing and updating data without manual input.",
   },
   {
     question: "Can AI handle repetitive admin tasks in my business?",
-    answer:
-      "Yes. Manasflow creates AI agents that can process emails, extract information, update records, and trigger actions across your tools, acting like a digital employee.",
+    answer: (
+      <>
+        <p className="mb-4"><strong>Yes.</strong> Manasflow creates AI agents that act like digital employees. They can process emails, extract information, update records, and trigger actions across your tools.</p>
+        <p>Common administrative automations include invoice parsing, inbox triage, and automated reporting.</p>
+      </>
+    ),
+    schemaAnswer: "Yes. Manasflow creates AI agents that can process emails, extract information, update records, and trigger actions across your tools, acting like a digital employee.",
   },
   {
     question: "How can I use AI in my specific industry?",
-    answer:
-      "We help operations teams automate lead handling, ECAD file conversions, unstructured data extraction, and complex document workflows using tailored AI integrations.",
+    answer: (
+      <>
+        <p className="mb-4">We tailor automations to your operational bottlenecks. Our core industry use cases include:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>Engineering:</strong> ECAD file conversions and automated compliance tracking.</li>
+          <li><strong>Real Estate:</strong> Document extraction and pipeline phase automation.</li>
+          <li><strong>Operations:</strong> Invoice processing, automated reporting, and intelligent routing.</li>
+        </ul>
+      </>
+    ),
+    schemaAnswer: "We help operations teams automate lead handling, ECAD file conversions, unstructured data extraction, and complex document workflows using tailored AI integrations.",
   },
   {
     question: "What is a custom AI agent and how does it work?",
-    answer:
-      "A custom AI agent is a software system built to perform specific business tasks. Manasflow builds these around your actual tools (leveraging frameworks like OpenClaw and Hermes) to execute multi-step workflows.",
+    answer: (
+      <>
+        <p className="mb-4">A custom AI agent is a software system built to perform specific business tasks. Manasflow builds these around your actual tools (leveraging frameworks like <strong>OpenClaw</strong> and <strong>Hermes</strong>) to execute multi-step workflows.</p>
+        <p>They operate independently, reasoning through edge cases, and report back when the task is complete.</p>
+      </>
+    ),
+    schemaAnswer: "A custom AI agent is a software system built to perform specific business tasks. Manasflow builds these around your actual tools (leveraging frameworks like OpenClaw and Hermes) to execute multi-step workflows.",
   },
   {
     question: "Do I need technical knowledge to use AI automation?",
-    answer:
-      "No. Manasflow handles the technical implementation and creates solutions your team can use through simple workflows or background automations.",
+    answer: (
+      <>
+        <p><strong>No technical background required.</strong> Manasflow handles the entire technical implementation. We deliver seamless solutions your team can use via simple interfaces (like Slack or email) or as silent background automations.</p>
+      </>
+    ),
+    schemaAnswer: "No. Manasflow handles the technical implementation and creates solutions your team can use through simple workflows or background automations.",
   },
 ];
 
@@ -46,7 +77,6 @@ export default function FAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // Generate JSON-LD Schema dynamically from the exact same data array
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -55,14 +85,13 @@ export default function FAQ() {
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer,
+        text: faq.schemaAnswer,
       },
     })),
   };
 
   return (
-    <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background">
-      {/* ── Inject JSON-LD Safely ── */}
+    <section className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background scroll-mt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -91,15 +120,15 @@ export default function FAQ() {
               <div key={index} className="border-b border-border">
                 <button
                   type="button"
-                  className="w-full py-8 lg:py-10 flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent group cursor-pointer"
+                  className="w-full py-6 md:py-8 lg:py-10 flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent group cursor-pointer"
                   onClick={() => toggleOpen(index)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                 >
-                  <h3 className="font-heading text-xl lg:text-2xl font-bold text-primary pr-8 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="font-heading text-xl lg:text-2xl font-bold text-primary pr-6 group-hover:text-accent transition-colors duration-300">
                     {faq.question}
                   </h3>
-                  <div className="flex-shrink-0 text-accent group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex-shrink-0 p-2 -mr-2 text-accent group-hover:scale-110 transition-transform duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center">
                     {isOpen ? (
                       <MinusIcon className="w-6 h-6" />
                     ) : (
@@ -108,7 +137,6 @@ export default function FAQ() {
                   </div>
                 </button>
 
-                {/* ── Keep in DOM for crawlability, control visibility with Framer Motion height/opacity ── */}
                 <motion.div
                   id={`faq-answer-${index}`}
                   initial={false}
@@ -120,7 +148,7 @@ export default function FAQ() {
                   className="overflow-hidden"
                   aria-hidden={!isOpen}
                 >
-                  <div className="pb-8 lg:pb-10 font-sans text-lg font-light text-secondary leading-relaxed pr-8">
+                  <div className="pb-8 lg:pb-10 font-sans text-base md:text-lg font-light text-secondary leading-relaxed pr-8">
                     {faq.answer}
                   </div>
                 </motion.div>
