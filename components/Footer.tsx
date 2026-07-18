@@ -78,17 +78,20 @@ export default function Footer() {
                 <h3 className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-muted/60 mb-8">
                   Contact
                 </h3>
-                <ul className="space-y-4 font-sans text-muted font-light">
-                  <li>
+                <address className="space-y-4 font-sans text-muted font-light not-italic">
+                  <div>
                     <a
                       href="mailto:info@manasflow.com"
                       className="hover:text-on-primary transition-colors duration-300"
                     >
                       info@manasflow.com
                     </a>
-                  </li>
-                  <li>Milan, Italy</li>
-                </ul>
+                  </div>
+                  <div>
+                    Based in Milan, Italy.<br />
+                    Serving SME operations teams across Europe, North America, and the Middle East.
+                  </div>
+                </address>
               </div>
 
               <div className="lg:col-span-1">

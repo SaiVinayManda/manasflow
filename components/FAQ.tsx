@@ -68,6 +68,24 @@ const faqData: FAQItem[] = [
     ),
     schemaAnswer: "No. Manasflow handles the technical implementation and creates solutions your team can use through simple workflows or background automations.",
   },
+  {
+    question: "What is AP pipeline automation?",
+    answer: (
+      <>
+        <p>AP pipeline automation replaces manual invoice entry, approval routing, and ERP syncing. Our custom AI agents extract data from emailed invoices, match them against purchase orders, and draft the payment entry for human review.</p>
+      </>
+    ),
+    schemaAnswer: "AP pipeline automation replaces manual invoice entry, approval routing, and ERP syncing using custom AI agents to extract data, match against POs, and draft entries for human review.",
+  },
+  {
+    question: "What is BOM automation?",
+    answer: (
+      <>
+        <p>BOM (Bill of Materials) automation extracts structured component lists from complex engineering documents, like ECAD files or PDFs, and formats them directly into your inventory or quoting systems.</p>
+      </>
+    ),
+    schemaAnswer: "BOM automation extracts structured component lists from complex engineering documents like ECAD files or PDFs and formats them directly into inventory or quoting systems.",
+  },
 ];
 
 export default function FAQ() {

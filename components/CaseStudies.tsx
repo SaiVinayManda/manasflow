@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: {},
@@ -28,6 +29,7 @@ type CaseStudy = {
   metric: string;
   description: string;
   metricLabel: string;
+  link: string;
 };
 
 const caseStudies: CaseStudy[] = [
@@ -37,6 +39,7 @@ const caseStudies: CaseStudy[] = [
     metricLabel: "Reduction in Processing Time",
     description:
       "Eliminated manual invoice processing for a top-tier real estate firm, converting raw PDFs into structured ledger entries without human intervention.",
+    link: "/blog/automated-ap-pipeline",
   },
   {
     workflow: "Automated BOM Generation",
@@ -44,6 +47,7 @@ const caseStudies: CaseStudy[] = [
     metricLabel: "Hours Saved Monthly",
     description:
       "Replaced manual 2D floor plan tracing with an AI vision system that instantly translates schematics into live-priced Bill of Materials.",
+    link: "/blog/automate-boq-material-takeoffs",
   },
   {
     workflow: "Sales Lead Qualification",
@@ -51,6 +55,7 @@ const caseStudies: CaseStudy[] = [
     metricLabel: "Increase in Lead Conversion",
     description:
       "Deployed a custom AI chatbot that aggressively pre-qualifies incoming traffic and books consultations, preventing high-value leads from going cold.",
+    link: "/blog/ai-automations-leads",
   },
 ];
 
@@ -101,9 +106,9 @@ export default function CaseStudies() {
               <div className="relative z-10">
                 <div className="inline-flex items-center px-3 py-1 mb-8 border border-border bg-background">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mr-2" />
-                  <span className="font-sans text-[11px] font-semibold tracking-wider uppercase text-secondary">
+                  <Link href={study.link} className="font-sans text-[11px] font-semibold tracking-wider uppercase text-secondary hover:text-accent transition-colors">
                     {study.workflow}
-                  </span>
+                  </Link>
                 </div>
                 
                 <div className="mb-8">
@@ -118,6 +123,10 @@ export default function CaseStudies() {
                 <p className="font-sans text-sm lg:text-base font-light leading-relaxed text-secondary group-hover:text-primary transition-colors duration-500">
                   {study.description}
                 </p>
+                
+                <Link href={study.link} className="inline-flex items-center gap-2 mt-6 font-sans text-sm font-medium text-accent hover:text-primary transition-colors duration-300">
+                  Read full breakdown &rarr;
+                </Link>
               </div>
             </motion.div>
           ))}

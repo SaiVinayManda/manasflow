@@ -215,6 +215,9 @@ export default function LeadChatbot() {
             <br />
             We prepare before we meet.
           </h2>
+          <p className="font-sans text-base lg:text-lg font-light text-secondary mt-6">
+            In 2–3 minutes, we’ll quantify your automation potential and recommend a deployment path.
+          </p>
         </div>
 
         {/* ── Chat panel ── */}
