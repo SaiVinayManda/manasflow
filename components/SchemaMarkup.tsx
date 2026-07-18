@@ -5,7 +5,7 @@ export function SchemaMarkup() {
     "@context": "https://schema.org",
     "@type": "Organization",
     url: "https://manasflow.com",
-    logo: "https://manasflow.com/logo.svg",
+    logo: "https://manasflow.com/icon.svg",
     name: "Manasflow",
     sameAs: [
       "https://twitter.com/manasflow",
