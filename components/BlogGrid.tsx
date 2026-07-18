@@ -66,7 +66,7 @@ export default function BlogGrid({ posts }: { posts: PostMeta[] }) {
                   <p className="font-sans text-xs font-normal tracking-widest uppercase text-muted-foreground">
                     {post.date} • {post.readingTime}
                   </p>
-                </div>
+                </div> 
                 <h2 className="font-heading text-2xl font-bold text-primary mb-4 group-hover:text-accent transition-colors">
                   {post.title}
                 </h2>

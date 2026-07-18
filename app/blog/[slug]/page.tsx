@@ -55,72 +55,72 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <>
-    <div className="py-24 px-6 sm:px-10 lg:px-20 max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
-      
-      {/* Article Content */}
-      <div className="flex-1 lg:max-w-3xl xl:max-w-4xl mx-auto lg:mx-0">
-        <header className="mb-12">
-          <Link href="/blog" className="font-sans text-sm font-medium text-secondary hover:text-primary transition-colors inline-flex items-center gap-2 mb-8">
-            <span aria-hidden="true">&larr;</span> Back to Blog
-          </Link>
-          <div className="flex items-center gap-3 mb-4">
-            <span className="inline-flex items-center rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent border border-accent/20">
-              {post.category}
-            </span>
-            <p className="font-sans text-sm font-semibold tracking-widest uppercase text-muted-foreground">
-              {post.date} • {post.readingTime}
-            </p>
-          </div>
-          <h1 className="font-heading font-bold text-4xl lg:text-5xl text-primary leading-[1.1] mb-6">
-            {post.title}
-          </h1>
-          <p className="font-sans text-xl text-secondary font-light mb-8">
-            {post.excerpt}
-          </p>
-          <div className="flex items-center gap-3">
-            {post.author === "Manasflow" ? (
-              <div className="w-10 h-10 rounded bg-primary flex items-center justify-center text-on-primary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 17V7L12 12L17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            ) : (
-              <div className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center font-sans font-bold text-primary">
-                {post.author.charAt(0)}
-              </div>
-            )}
-            <div>
-              <p className="font-sans text-sm font-medium text-primary">{post.author}</p>
-              <p className="font-sans text-xs text-secondary">{post.author === "Manasflow" ? "AI Automation Agency" : "Contributor"}</p>
+      <div className="py-24 px-6 sm:px-10 lg:px-20 max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
+
+        {/* Article Content */}
+        <div className="flex-1 lg:max-w-3xl xl:max-w-4xl mx-auto lg:mx-0">
+          <header className="mb-12">
+            <Link href="/blog" className="font-sans text-sm font-medium text-secondary hover:text-primary transition-colors inline-flex items-center gap-2 mb-8">
+              <span aria-hidden="true">&larr;</span> Back to Blog
+            </Link>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="inline-flex items-center rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent border border-accent/20">
+                {post.category}
+              </span>
+              <p className="font-sans text-sm font-semibold tracking-widest uppercase text-muted-foreground">
+                {post.date} • {post.readingTime}
+              </p>
             </div>
-          </div>
-        </header>
+            <h1 className="font-heading font-bold text-4xl lg:text-5xl text-primary leading-[1.1] mb-6">
+              {post.title}
+            </h1>
+            <p className="font-sans text-xl text-secondary font-light mb-8">
+              {post.excerpt}
+            </p>
+            <div className="flex items-center gap-3">
+              {post.author === "Manasflow" ? (
+                <div className="w-10 h-10 rounded bg-primary flex items-center justify-center text-on-primary">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17V7L12 12L17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center font-sans font-bold text-primary">
+                  {post.author.charAt(0)}
+                </div>
+              )}
+              <div>
+                <p className="font-sans text-sm font-medium text-primary">{post.author}</p>
+                <p className="font-sans text-xs text-secondary">{post.author === "Manasflow" ? "AI Automation Agency" : "Contributor"}</p>
+              </div>
+            </div>
+          </header>
 
-        <article 
-          className="prose prose-invert max-w-2xl mx-auto"
-          dangerouslySetInnerHTML={{ __html: processedHtml }} 
-        />
-      </div>
+          <article
+            className="prose max-w-2xl mx-auto"
+            dangerouslySetInnerHTML={{ __html: processedHtml }}
+          />
+        </div>
 
-      {/* Sticky Table of Contents */}
-      {headings.length > 0 && (
-        <aside className="hidden lg:block w-64 shrink-0 relative">
-          <div className="sticky top-32 border-l border-border pl-6">
-            <h3 className="font-sans text-sm font-bold uppercase tracking-widest text-primary mb-6">
-              In this article
-            </h3>
-            <ul className="flex flex-col gap-3 font-sans text-sm">
-              {headings.map((heading, i) => (
-                <li key={i} className={heading.level === 3 ? "ml-4" : ""}>
-                  <a href={`#${heading.id}`} className="text-secondary hover:text-accent transition-colors block line-clamp-2">
-                    {heading.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
-      )}
+        {/* Sticky Table of Contents */}
+        {headings.length > 0 && (
+          <aside className="hidden lg:block w-64 shrink-0 relative">
+            <div className="sticky top-32 border-l border-border pl-6">
+              <h3 className="font-sans text-sm font-bold uppercase tracking-widest text-primary mb-6">
+                In this article
+              </h3>
+              <ul className="flex flex-col gap-3 font-sans text-sm">
+                {headings.map((heading, i) => (
+                  <li key={i} className={heading.level === 3 ? "ml-4" : ""}>
+                    <a href={`#${heading.id}`} className="text-secondary hover:text-accent transition-colors block line-clamp-2">
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+        )}
 
       </div>
 
