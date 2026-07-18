@@ -250,6 +250,9 @@ export default function IndustrySolutions() {
             <br />
             Tailored to your sector.
           </h2>
+          <p className="font-sans text-base lg:text-lg font-light text-secondary leading-relaxed mt-5 max-w-2xl">
+            We primarily serve construction, MEP, real estate, manufacturing, and digital media operations teams.
+          </p>
         </div>
 
         {/* ── Layout ── */}
@@ -306,6 +309,22 @@ export default function IndustrySolutions() {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+
+        {/* ── Edge-case routing ── */}
+        <div className="mt-16 lg:mt-20 flex items-center gap-3">
+          <div className="flex-1 h-px bg-border/40" />
+          <a
+            href="mailto:info@manasflow.com"
+            className="font-sans text-sm font-light text-secondary/60 hover:text-accent transition-colors duration-200 whitespace-nowrap"
+          >
+            Don&rsquo;t see your sector?{" "}
+            <span className="font-medium underline underline-offset-4">
+              Contact us
+            </span>{" "}
+            &rarr;
+          </a>
+          <div className="flex-1 h-px bg-border/40" />
         </div>
       </div>
     </section>

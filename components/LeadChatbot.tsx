@@ -390,6 +390,17 @@ export default function LeadChatbot() {
             </div>
           </div>
         </div>
+
+        {/* ── Email alternative ── */}
+        <p className="font-sans text-sm font-light text-secondary/70 text-center mt-8">
+          Prefer email?{" "}
+          <a
+            href="mailto:info@manasflow.com"
+            className="font-medium text-accent hover:text-primary underline underline-offset-4 transition-colors duration-200"
+          >
+            Contact us at info@manasflow.com
+          </a>
+        </p>
       </div>
     </section>
   );

@@ -3,6 +3,22 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
+/* ── Anchor pillar data ── */
+const anchors = [
+  {
+    eyebrow: "Who it's for",
+    value: "SME Operations Managers",
+  },
+  {
+    eyebrow: "What it does",
+    value: "Custom AI Agents & Data Systems",
+  },
+  {
+    eyebrow: "Outcome",
+    value: "Hands-free Workflow Automation",
+  },
+];
+
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -49,6 +65,7 @@ export default function Hero() {
       },
     },
   };
+
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Background — clean, no decoration */}
@@ -83,6 +100,14 @@ export default function Hero() {
                 for repetitive work.
               </motion.span>
             </motion.h1>
+
+            {/* ── Subheadline clarifier ── */}
+            <motion.p
+              variants={fadeIn}
+              className="font-sans text-lg sm:text-xl font-light text-secondary leading-relaxed mt-6 max-w-lg"
+            >
+              AI agents that do your repetitive operations work.
+            </motion.p>
           </div>
 
           {/* ── Right: Accent line + subtext + CTA (5 cols) ── */}
@@ -102,44 +127,52 @@ export default function Hero() {
                 Premium AI agents and automations for operations managers.
               </motion.p>
 
-              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#lead-chatbot"
-                  className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
-                >
-                  Book a consultation
-                  <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-                </a>
-                <a
-                  href="#industries"
-                  className="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wide text-primary px-8 py-4 border border-border transition-all duration-300 ease-out hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
-                >
-                  Solutions
-                </a>
+              <motion.div variants={fadeIn} className="flex flex-col gap-3">
+                {/* CTA group */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="#lead-chatbot"
+                    className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+                  >
+                    Book a consultation
+                    <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                  </a>
+                  <a
+                    href="#industries"
+                    className="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wide text-primary px-8 py-4 border border-border transition-all duration-300 ease-out hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+                  >
+                    Solutions
+                  </a>
+                </div>
+
+                {/* ── CTA micro-copy ── */}
+                <p className="font-sans text-xs font-light text-secondary/60 leading-relaxed">
+                  In 3 minutes we&rsquo;ll estimate your automation impact and suggest next steps.
+                </p>
               </motion.div>
 
-              {/* Trust signal — minimal, factual */}
+              {/* ── 3-Pillar anchor row ── */}
               <motion.div
                 variants={fadeIn}
-                className="flex items-center gap-6 pt-2"
+                className="flex items-start gap-0 pt-2 border-t border-border"
               >
-                <div className="flex flex-col">
-                  <span className="font-heading text-3xl font-bold text-primary tabular-nums">
-                    50+
-                  </span>
-                  <span className="font-sans text-xs font-medium tracking-wide uppercase text-secondary">
-                    Automations deployed
-                  </span>
-                </div>
-                <div className="w-px h-10 bg-border" />
-                <div className="flex flex-col">
-                  <span className="font-heading text-3xl font-bold text-primary tabular-nums">
-                    12k
-                  </span>
-                  <span className="font-sans text-xs font-medium tracking-wide uppercase text-secondary">
-                    Hours saved monthly
-                  </span>
-                </div>
+                {anchors.map((anchor, i) => (
+                  <div
+                    key={anchor.eyebrow}
+                    className="flex-1 flex flex-col gap-1.5 px-0 py-4 first:pl-0 last:pr-0"
+                    style={{
+                      paddingLeft: i > 0 ? "1rem" : undefined,
+                      borderLeft: i > 0 ? "1px solid var(--color-border)" : undefined,
+                    }}
+                  >
+                    <span className="font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-secondary/50">
+                      {anchor.eyebrow}
+                    </span>
+                    <span className="font-sans text-sm font-medium text-primary leading-snug">
+                      {anchor.value}
+                    </span>
+                  </div>
+                ))}
               </motion.div>
             </div>
           </div>

@@ -73,9 +73,15 @@ export default function Services() {
               <span className="font-sans text-sm font-medium tracking-[0.2em] text-secondary mb-4 block">
                 01
               </span>
-              <h3 className="font-heading text-3xl font-bold text-primary mb-6">
+              <h3 className="font-heading text-3xl font-bold text-primary mb-3">
                 AI Automations
               </h3>
+              <p className="font-sans text-[11px] font-semibold tracking-[0.18em] uppercase text-accent/70 mb-3">
+                Ideal for
+              </p>
+              <p className="font-sans text-sm font-light text-secondary/75 leading-relaxed mb-5">
+                Teams with an existing CRM and accounting tool who want quick, measurable wins without a full technical build.
+              </p>
               <p className="font-sans text-lg font-light text-secondary leading-relaxed">
                 Simple workflows, CRM synchronization, and task optimizations to
                 eliminate manual data entry.
@@ -96,9 +102,15 @@ export default function Services() {
               <span className="font-sans text-sm font-medium tracking-[0.2em] text-secondary mb-4 block">
                 02
               </span>
-              <h3 className="font-heading text-3xl font-bold text-primary mb-6">
+              <h3 className="font-heading text-3xl font-bold text-primary mb-3">
                 Custom AI Agents
               </h3>
+              <p className="font-sans text-[11px] font-semibold tracking-[0.18em] uppercase text-accent/70 mb-3">
+                Ideal for
+              </p>
+              <p className="font-sans text-sm font-light text-secondary/75 leading-relaxed mb-5">
+                Operations managers who need autonomous digital workers to handle multi-step tasks — qualification, reporting, or dispatch — without daily oversight.
+              </p>
               <p className="font-sans text-lg font-light text-secondary leading-relaxed max-w-xl">
                 Personalized digital employees powered by OpenClaw & Hermes,
                 capable of complex reasoning and independent execution.
@@ -117,9 +129,15 @@ export default function Services() {
                 <span className="font-sans text-sm font-medium tracking-[0.2em] text-secondary mb-4 block">
                   03
                 </span>
-                <h3 className="font-heading text-4xl lg:text-5xl font-bold text-primary mb-4">
+                <h3 className="font-heading text-4xl lg:text-5xl font-bold text-primary mb-3">
                   Enterprise AI Systems
                 </h3>
+                <p className="font-sans text-[11px] font-semibold tracking-[0.18em] uppercase text-accent/70 mb-3">
+                  Ideal for
+                </p>
+                <p className="font-sans text-sm font-light text-secondary/75 leading-relaxed">
+                  Businesses with siloed data across departments — ERP, CRM, field ops, finance — that need a unified intelligence layer rather than point-to-point integrations.
+                </p>
               </div>
             </div>
 

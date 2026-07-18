@@ -9,6 +9,7 @@ import ROICalculator from "@/components/ROICalculator";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import LeadMagnet from "@/components/LeadMagnet";
+import SecurityCompliance from "@/components/SecurityCompliance";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
@@ -47,6 +48,7 @@ export default function Home() {
       <Team />
       <Testimonials />
       <LeadMagnet />
+      <SecurityCompliance />
       <FAQ />
       <Footer />
     </main>

@@ -7,21 +7,25 @@ const steps = [
     number: "01",
     title: "Workflow Audit",
     description: "Mapping existing bottlenecks",
+    deliverable: "Bottleneck report and automation roadmap.",
   },
   {
     number: "02",
     title: "System Architecture",
     description: "Designing the multi-agent or integration blueprint",
+    deliverable: "Technical architecture document and tool integration plan.",
   },
   {
     number: "03",
     title: "Agent Deployment",
     description: "Building via OpenClaw/Hermes in a staging environment",
+    deliverable: "Fully tested agent or workflow, ready for production sign-off.",
   },
   {
     number: "04",
     title: "Handoff & Maintenance",
     description: "Live deployment with ongoing optimization",
+    deliverable: "Deployed system, runbook, and optional support SLA.",
   },
 ];
 
@@ -119,6 +123,16 @@ export default function ProcessTimeline() {
                     <p className="font-sans text-base lg:text-lg font-light leading-relaxed text-secondary pr-4">
                       {step.description}
                     </p>
+
+                    {/* ── Deliverable tag ── */}
+                    <div className="mt-5 pt-4 border-t border-border/50 flex items-baseline gap-2">
+                      <span className="font-sans text-[10px] font-semibold tracking-[0.2em] uppercase text-accent flex-shrink-0">
+                        Deliverable
+                      </span>
+                      <span className="font-sans text-sm font-light text-secondary leading-snug">
+                        {step.deliverable}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </motion.div>

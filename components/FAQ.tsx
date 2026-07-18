@@ -15,7 +15,7 @@ const faqData: FAQItem[] = [
     question: "How do I automate manual data entry between my CRM and other tools?",
     answer: (
       <>
-        <p className="mb-4">Manasflow builds custom AI workflows that connect your CRM with other systems, automatically syncing and updating data without manual input. This eliminates the "swivel chair" problem by:</p>
+        <p className="mb-4">Manasflow builds custom AI workflows that connect your CRM with other systems, automatically syncing and updating data without manual input. This eliminates the &ldquo;swivel chair&rdquo; problem by:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Extracting</strong> unstructured data from emails or PDFs.</li>
           <li><strong>Transforming</strong> it into clean, standardized formats.</li>
@@ -29,8 +29,13 @@ const faqData: FAQItem[] = [
     question: "Can AI handle repetitive admin tasks in my business?",
     answer: (
       <>
-        <p className="mb-4"><strong>Yes.</strong> Manasflow creates AI agents that act like digital employees. They can process emails, extract information, update records, and trigger actions across your tools.</p>
-        <p>Common administrative automations include invoice parsing, inbox triage, and automated reporting.</p>
+        <p className="mb-4"><strong>Yes.</strong> Manasflow creates AI agents that act like digital employees. Common automations include:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>Invoice parsing</strong> — extract line items from any PDF format.</li>
+          <li><strong>Inbox triage</strong> — classify, tag, and route emails automatically.</li>
+          <li><strong>Automated reporting</strong> — generate weekly ops reports without touching a spreadsheet.</li>
+          <li><strong>Record updates</strong> — sync data across CRM, ERP, and accounting tools silently.</li>
+        </ul>
       </>
     ),
     schemaAnswer: "Yes. Manasflow creates AI agents that can process emails, extract information, update records, and trigger actions across your tools, acting like a digital employee.",
@@ -39,10 +44,11 @@ const faqData: FAQItem[] = [
     question: "How can I use AI in my specific industry?",
     answer: (
       <>
-        <p className="mb-4">We tailor automations to your operational bottlenecks. Our core industry use cases include:</p>
+        <p className="mb-4">We tailor automations to your operational bottlenecks. Core use cases by sector:</p>
         <ul className="list-disc pl-6 space-y-2">
-          <li><strong>Engineering:</strong> ECAD file conversions and automated compliance tracking.</li>
-          <li><strong>Real Estate:</strong> Document extraction and pipeline phase automation.</li>
+          <li><strong>Engineering &amp; Electrical:</strong> ECAD file conversions, BOM generation, compliance tracking.</li>
+          <li><strong>Real Estate:</strong> Document extraction, pipeline phase automation, AP processing.</li>
+          <li><strong>Field Services:</strong> Dispatch routing, pre-arrival briefs, post-service reporting.</li>
           <li><strong>Operations:</strong> Invoice processing, automated reporting, and intelligent routing.</li>
         </ul>
       </>
@@ -50,11 +56,32 @@ const faqData: FAQItem[] = [
     schemaAnswer: "We help operations teams automate lead handling, ECAD file conversions, unstructured data extraction, and complex document workflows using tailored AI integrations.",
   },
   {
+    question: "What tools do you integrate with?",
+    answer: (
+      <>
+        <p className="mb-4">We integrate with the tools your team already uses — no rip-and-replace required. Common integrations include:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>CRM:</strong> Salesforce, HubSpot, Pipedrive.</li>
+          <li><strong>Accounting:</strong> QuickBooks, Xero, SAP.</li>
+          <li><strong>Automation platforms:</strong> Zapier, Make, n8n.</li>
+          <li><strong>Communication:</strong> Slack, Microsoft Teams, Gmail.</li>
+          <li><strong>ERP &amp; Ops:</strong> Custom APIs, database connectors, and proprietary internal systems.</li>
+        </ul>
+      </>
+    ),
+    schemaAnswer: "Manasflow integrates with Salesforce, HubSpot, QuickBooks, Xero, Zapier, Make, Slack, and custom APIs and internal systems.",
+  },
+  {
     question: "What is a custom AI agent and how does it work?",
     answer: (
       <>
-        <p className="mb-4">A custom AI agent is a software system built to perform specific business tasks. Manasflow builds these around your actual tools (leveraging frameworks like <strong>OpenClaw</strong> and <strong>Hermes</strong>) to execute multi-step workflows.</p>
-        <p>They operate independently, reasoning through edge cases, and report back when the task is complete.</p>
+        <p className="mb-4">A custom AI agent is a software system built to perform specific business tasks autonomously. Manasflow builds these using <strong>OpenClaw</strong> and <strong>Hermes</strong> frameworks. A typical agent:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>Monitors</strong> a trigger (email received, form submitted, schedule).</li>
+          <li><strong>Reasons</strong> through the task, handling edge cases without human input.</li>
+          <li><strong>Executes</strong> multi-step actions across your connected tools.</li>
+          <li><strong>Reports back</strong> with a summary or escalates only when needed.</li>
+        </ul>
       </>
     ),
     schemaAnswer: "A custom AI agent is a software system built to perform specific business tasks. Manasflow builds these around your actual tools (leveraging frameworks like OpenClaw and Hermes) to execute multi-step workflows.",

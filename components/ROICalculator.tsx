@@ -59,12 +59,15 @@ export default function ROICalculator() {
                 Estimated Monthly Financial Leakage
               </p>
               
-              <div className="font-heading text-6xl lg:text-8xl font-bold text-primary tracking-tighter tabular-nums mb-6 transition-all duration-300">
+              <div className="font-heading text-6xl lg:text-8xl font-bold text-primary tracking-tighter tabular-nums mb-3 transition-all duration-300">
                 ${cost.toLocaleString()}
               </div>
-              
-              <p className="font-sans text-sm font-light text-secondary/60 mb-12">
-                *Calculated at an industry average of $35/hr.
+
+              <p className="font-sans text-sm font-light text-secondary/55 mb-2">
+                Calculated based on the manual hours and team size you enter in the chat.
+              </p>
+              <p className="font-sans text-xs font-light text-secondary/40 mb-12">
+                *Assumes an industry-average blended rate of $35/hr.
               </p>
 
               <a

@@ -33,11 +33,14 @@ export default function LeadMagnet() {
           <p className="font-sans text-sm font-medium tracking-[0.2em] uppercase text-accent mb-6">
             Free Resource
           </p>
-          <h2 className="font-heading font-bold text-primary text-4xl lg:text-6xl leading-[1.05] mb-6">
+          <h2 className="font-heading font-bold text-primary text-4xl lg:text-6xl leading-[1.05] mb-4">
             Not ready to talk?
             <br />
             Start optimizing today.
           </h2>
+          <p className="font-sans text-sm font-medium tracking-[0.15em] uppercase text-accent mb-4">
+            Includes 20+ checks grouped by CRM, accounting, field ops, and management reporting.
+          </p>
           <p className="font-sans text-lg lg:text-xl font-light text-secondary leading-relaxed mb-12 max-w-2xl">
             Download the 2026 SME Workflow Automation Checklist and identify the hidden bottlenecks bleeding capital in your operations.
           </p>

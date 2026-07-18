@@ -127,6 +127,15 @@ export default function CaseStudies() {
                 <Link href={study.link} className="inline-flex items-center gap-2 mt-6 font-sans text-sm font-medium text-accent hover:text-primary transition-colors duration-300">
                   Read full breakdown &rarr;
                 </Link>
+
+                {/* ── Services routing ── */}
+                <Link
+                  href="/#services"
+                  className="inline-flex items-center gap-1.5 mt-3 font-sans text-xs font-medium tracking-wide text-secondary/55 hover:text-accent transition-colors duration-300 group/svc"
+                >
+                  See how we build agents like this
+                  <span className="transition-transform duration-300 group-hover/svc:translate-x-0.5" aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
             </motion.div>
           ))}
