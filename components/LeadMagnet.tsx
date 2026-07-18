@@ -74,7 +74,7 @@ export default function LeadMagnet() {
                   />
                   <button
                     type="submit"
-                    className="w-full px-8 py-4 bg-primary text-on-primary font-sans font-medium tracking-widest uppercase hover:bg-primary/90 transition-colors duration-300"
+                    className="w-full px-8 py-4 bg-primary text-on-primary font-sans font-medium tracking-widest uppercase hover:bg-primary/90 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
                   >
                     Download PDF
                   </button>

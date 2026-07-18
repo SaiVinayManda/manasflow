@@ -36,7 +36,7 @@ export default function BlogGrid({ posts }: { posts: PostMeta[] }) {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full border text-sm font-sans font-medium transition-colors ${selectedCategory === category
+            className={`px-4 py-2 rounded-full border text-sm font-sans font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${selectedCategory === category
                 ? "bg-primary text-on-primary border-primary"
                 : "bg-transparent text-secondary border-border hover:border-primary hover:text-primary"
               }`}
@@ -58,7 +58,7 @@ export default function BlogGrid({ posts }: { posts: PostMeta[] }) {
               transition={{ duration: 0.2 }}
               key={post.slug}
             >
-              <Link href={`/blog/${post.slug}`} className="h-full group flex flex-col bg-on-primary border border-border p-8 transition-transform duration-300 hover:scale-[1.02]">
+              <Link href={`/blog/${post.slug}`} className="h-full group flex flex-col bg-on-primary border border-border p-8 transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm">
                 <div className="flex justify-between items-start mb-4">
                   <span className="inline-flex items-center rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent border border-accent/20">
                     {post.category}

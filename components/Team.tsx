@@ -45,10 +45,10 @@ export default function Team() {
             </h2>
             <div className="font-sans text-lg lg:text-xl font-light text-secondary leading-relaxed space-y-6">
               <p>
-                Manasflow is led by a Full Stack Engineer holding a Master's degree in Robotics Engineering with a specialization in Artificial Intelligence.
+                <strong>Who leads Manasflow:</strong> Manasflow is led by a Full Stack Engineer holding a Master's degree in Robotics Engineering with a specialization in Artificial Intelligence.
               </p>
               <p>
-                We don't just patch software together; we build robust, autonomous architectures from the ground up, guaranteeing scalable systems that replace brittle human workflows with unrelenting logic.
+                <strong>How we build:</strong> We don't just patch software together; we build robust, autonomous architectures from the ground up, guaranteeing scalable systems that replace brittle human workflows with unrelenting logic.
               </p>
             </div>
           </div>

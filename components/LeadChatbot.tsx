@@ -311,7 +311,7 @@ export default function LeadChatbot() {
                   type="button"
                   onClick={handleSend}
                   disabled={!input.trim()}
-                  className="flex-shrink-0 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-accent transition-colors duration-200 disabled:text-border disabled:cursor-not-allowed hover:text-primary cursor-pointer"
+                  className="flex-shrink-0 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-accent transition-colors duration-200 disabled:text-border disabled:cursor-not-allowed hover:text-primary cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-md"
                   aria-label="Send message"
                 >
                   <PaperPlaneIcon className="w-[18px] h-[18px]" aria-hidden="true" />

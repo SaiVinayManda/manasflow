@@ -7,25 +7,25 @@ const steps = [
     number: "01",
     title: "Workflow Audit",
     description: "Mapping existing bottlenecks",
-    deliverable: "Bottleneck report and automation roadmap.",
+    deliverable: "You get a bottleneck map and automation roadmap.",
   },
   {
     number: "02",
     title: "System Architecture",
     description: "Designing the multi-agent or integration blueprint",
-    deliverable: "Technical architecture document and tool integration plan.",
+    deliverable: "You get a diagram of the proposed multi-agent/integration system.",
   },
   {
     number: "03",
     title: "Agent Deployment",
     description: "Building via OpenClaw/Hermes in a staging environment",
-    deliverable: "Fully tested agent or workflow, ready for production sign-off.",
+    deliverable: "You get a working prototype in a staging environment.",
   },
   {
     number: "04",
     title: "Handoff & Maintenance",
     description: "Live deployment with ongoing optimization",
-    deliverable: "Deployed system, runbook, and optional support SLA.",
+    deliverable: "You get a live system + ongoing monitoring.",
   },
 ];
 
@@ -125,13 +125,10 @@ export default function ProcessTimeline() {
                     </p>
 
                     {/* ── Deliverable tag ── */}
-                    <div className="mt-5 pt-4 border-t border-border/50 flex items-baseline gap-2">
-                      <span className="font-sans text-[10px] font-semibold tracking-[0.2em] uppercase text-accent flex-shrink-0">
-                        Deliverable
-                      </span>
-                      <span className="font-sans text-sm font-light text-secondary leading-snug">
-                        {step.deliverable}
-                      </span>
+                    <div className="mt-5 pt-4 border-t border-border/50">
+                      <p className="font-sans text-sm text-secondary/80 leading-snug">
+                        <strong className="font-semibold text-primary">Deliverable:</strong> {step.deliverable}
+                      </p>
                     </div>
                   </div>
                 </div>

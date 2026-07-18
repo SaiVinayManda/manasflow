@@ -106,7 +106,7 @@ export default function CaseStudies() {
               <div className="relative z-10">
                 <div className="inline-flex items-center px-3 py-1 mb-8 border border-border bg-background">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mr-2" />
-                  <Link href={study.link} className="font-sans text-[11px] font-semibold tracking-wider uppercase text-secondary hover:text-accent transition-colors">
+                  <Link href={study.link} className="font-sans text-[11px] font-semibold tracking-wider uppercase text-secondary hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm">
                     {study.workflow}
                   </Link>
                 </div>
@@ -124,14 +124,14 @@ export default function CaseStudies() {
                   {study.description}
                 </p>
                 
-                <Link href={study.link} className="inline-flex items-center gap-2 mt-6 font-sans text-sm font-medium text-accent hover:text-primary transition-colors duration-300">
+                <Link href={study.link} className="inline-flex items-center gap-2 mt-6 font-sans text-sm font-medium text-accent hover:text-primary transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm">
                   Read full breakdown &rarr;
                 </Link>
 
                 {/* ── Services routing ── */}
                 <Link
                   href="/#services"
-                  className="inline-flex items-center gap-1.5 mt-3 font-sans text-xs font-medium tracking-wide text-secondary/55 hover:text-accent transition-colors duration-300 group/svc"
+                  className="inline-flex items-center gap-1.5 mt-3 font-sans text-xs font-medium tracking-wide text-secondary/55 hover:text-accent transition-colors duration-300 group/svc focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
                 >
                   See how we build agents like this
                   <span className="transition-transform duration-300 group-hover/svc:translate-x-0.5" aria-hidden="true">&rarr;</span>

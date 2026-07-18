@@ -194,7 +194,7 @@ export default function Footer() {
                       <li key={link.label}>
                         <Link
                           href={link.href}
-                          className="group inline-flex items-center py-2 font-sans text-sm font-light text-muted/70 hover:text-on-primary transition-colors duration-200 focus-visible:outline-none focus-visible:text-on-primary min-h-[44px]"
+                          className="group inline-flex items-center py-2 font-sans text-sm font-light text-muted/70 hover:text-on-primary transition-colors duration-200 min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
                         >
                           <span className="relative">
                             {link.label}
@@ -252,7 +252,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Manasflow on LinkedIn"
-                    className="inline-flex items-center gap-2.5 py-2 font-sans text-sm font-light text-muted/70 hover:text-on-primary transition-colors duration-200 focus-visible:outline-none focus-visible:text-on-primary min-h-[44px]"
+                    className="inline-flex items-center gap-2.5 py-2 font-sans text-sm font-light text-muted/70 hover:text-on-primary transition-colors duration-200 min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
                   >
                     <LinkedInIcon />
                     LinkedIn
@@ -308,7 +308,7 @@ export default function Footer() {
                       key={key}
                       type="button"
                       onClick={() => setActiveModal(key)}
-                      className="font-sans text-xs font-light text-muted/40 hover:text-on-primary transition-colors duration-200 cursor-pointer min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:text-on-primary capitalize"
+                      className="font-sans text-xs font-light text-muted/40 hover:text-on-primary transition-colors duration-200 cursor-pointer min-h-[44px] inline-flex items-center capitalize focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
                     >
                       {key === "privacy"
                         ? "Privacy Policy"
@@ -363,7 +363,7 @@ export default function Footer() {
             >
               <button
                 onClick={closeModal}
-                className="absolute top-5 right-5 p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center text-secondary hover:text-primary transition-colors duration-200 rounded-full focus-visible:outline-2 focus-visible:outline-ring"
+                className="absolute top-5 right-5 p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center text-secondary hover:text-primary transition-colors duration-200 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
                 aria-label="Close"
               >
                 <Cross1Icon className="w-4 h-4" aria-hidden="true" />

@@ -15,6 +15,9 @@ const faqData: FAQItem[] = [
     question: "How do I automate manual data entry between my CRM and other tools?",
     answer: (
       <>
+        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+          TL;DR: We build custom AI integrations that automatically extract, transform, and route data between your existing tools.
+        </p>
         <p className="mb-4">Manasflow builds custom AI workflows that connect your CRM with other systems, automatically syncing and updating data without manual input. This eliminates the &ldquo;swivel chair&rdquo; problem by:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Extracting</strong> unstructured data from emails or PDFs.</li>
@@ -29,6 +32,9 @@ const faqData: FAQItem[] = [
     question: "Can AI handle repetitive admin tasks in my business?",
     answer: (
       <>
+        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+          TL;DR: Yes, our AI agents act as digital employees to handle tasks like invoice parsing, email triage, and reporting.
+        </p>
         <p className="mb-4"><strong>Yes.</strong> Manasflow creates AI agents that act like digital employees. Common automations include:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Invoice parsing</strong> — extract line items from any PDF format.</li>
@@ -44,6 +50,9 @@ const faqData: FAQItem[] = [
     question: "How can I use AI in my specific industry?",
     answer: (
       <>
+        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+          TL;DR: We build tailored solutions for operational bottlenecks across engineering, real estate, field services, and more.
+        </p>
         <p className="mb-4">We tailor automations to your operational bottlenecks. Core use cases by sector:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Engineering &amp; Electrical:</strong> ECAD file conversions, BOM generation, compliance tracking.</li>
@@ -59,6 +68,9 @@ const faqData: FAQItem[] = [
     question: "What tools do you integrate with?",
     answer: (
       <>
+        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+          TL;DR: We integrate seamlessly with your existing stack, including Salesforce, QuickBooks, Zapier, and custom APIs.
+        </p>
         <p className="mb-4">We integrate with the tools your team already uses — no rip-and-replace required. Common integrations include:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>CRM:</strong> Salesforce, HubSpot, Pipedrive.</li>
@@ -75,6 +87,9 @@ const faqData: FAQItem[] = [
     question: "What is a custom AI agent and how does it work?",
     answer: (
       <>
+        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+          TL;DR: An AI agent is an autonomous software worker that monitors triggers, reasons through edge cases, and executes multi-step actions.
+        </p>
         <p className="mb-4">A custom AI agent is a software system built to perform specific business tasks autonomously. Manasflow builds these using <strong>OpenClaw</strong> and <strong>Hermes</strong> frameworks. A typical agent:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Monitors</strong> a trigger (email received, form submitted, schedule).</li>
@@ -90,6 +105,9 @@ const faqData: FAQItem[] = [
     question: "Do I need technical knowledge to use AI automation?",
     answer: (
       <>
+        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+          TL;DR: Not at all; we handle the full technical build and deliver intuitive solutions that require zero coding.
+        </p>
         <p><strong>No technical background required.</strong> Manasflow handles the entire technical implementation. We deliver seamless solutions your team can use via simple interfaces (like Slack or email) or as silent background automations.</p>
       </>
     ),
@@ -165,7 +183,7 @@ export default function FAQ() {
               <div key={index} className="border-b border-border">
                 <button
                   type="button"
-                  className="w-full py-6 md:py-8 lg:py-10 flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent group cursor-pointer"
+                  className="w-full py-6 md:py-8 lg:py-10 flex justify-between items-center text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent group cursor-pointer"
                   onClick={() => toggleOpen(index)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}

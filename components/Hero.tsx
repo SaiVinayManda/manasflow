@@ -132,21 +132,21 @@ export default function Hero() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
                     href="#lead-chatbot"
-                    className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+                    className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer"
                   >
                     Book a consultation
                     <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                   </a>
                   <a
                     href="#industries"
-                    className="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wide text-primary px-8 py-4 border border-border transition-all duration-300 ease-out hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wide text-primary px-8 py-4 border border-border transition-all duration-300 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer"
                   >
                     Solutions
                   </a>
                 </div>
 
                 {/* ── CTA micro-copy ── */}
-                <p className="font-sans text-xs font-light text-secondary/60 leading-relaxed">
+                <p className="font-sans text-xs font-light text-secondary/80 leading-relaxed">
                   In 3 minutes we&rsquo;ll estimate your automation impact and suggest next steps.
                 </p>
               </motion.div>
@@ -165,7 +165,7 @@ export default function Hero() {
                       borderLeft: i > 0 ? "1px solid var(--color-border)" : undefined,
                     }}
                   >
-                    <span className="font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-secondary/50">
+                    <span className="font-sans text-[10px] font-semibold tracking-[0.22em] uppercase text-secondary/80">
                       {anchor.eyebrow}
                     </span>
                     <span className="font-sans text-sm font-medium text-primary leading-snug">

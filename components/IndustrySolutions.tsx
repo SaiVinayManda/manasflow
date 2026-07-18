@@ -215,7 +215,7 @@ const SolutionCard = ({ item }: { item: SolutionItem }) => {
           <p className={cn("font-sans text-base md:text-lg font-medium text-primary leading-relaxed", !isExpanded && "line-clamp-3 md:line-clamp-none")}>
             {item.solution}
           </p>
-          <button 
+          <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="mt-2 text-sm font-medium text-accent md:hidden hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
           >
@@ -251,7 +251,7 @@ export default function IndustrySolutions() {
             Tailored to your sector.
           </h2>
           <p className="font-sans text-base lg:text-lg font-light text-secondary leading-relaxed mt-5 max-w-2xl">
-            We primarily serve construction, MEP, real estate, manufacturing, and digital media operations teams.
+            Here are typical bottlenecks we fix for construction, MEP, real estate, and operations teams.
           </p>
         </div>
 
@@ -267,23 +267,20 @@ export default function IndustrySolutions() {
                 <button
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
-                  className={`group flex items-center gap-4 w-full text-left px-6 py-5 border-l-2 transition-all duration-300 cursor-pointer ${
-                    isActive
+                  className={`group flex items-center gap-4 w-full text-left px-6 py-5 border-l-2 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${isActive
                       ? "border-accent bg-on-primary shadow-sm"
                       : "border-transparent hover:border-border hover:bg-muted/50"
-                  }`}
+                    }`}
                   aria-pressed={isActive}
                 >
                   <Icon
                     aria-hidden="true"
-                    className={`w-5 h-5 transition-colors duration-300 ${
-                      isActive ? "text-accent" : "text-secondary group-hover:text-primary"
-                    }`}
+                    className={`w-5 h-5 transition-colors duration-300 ${isActive ? "text-accent" : "text-secondary group-hover:text-primary"
+                      }`}
                   />
                   <span
-                    className={`font-sans font-medium text-base tracking-wide transition-colors duration-300 ${
-                      isActive ? "text-primary" : "text-secondary group-hover:text-primary"
-                    }`}
+                    className={`font-sans font-medium text-base tracking-wide transition-colors duration-300 ${isActive ? "text-primary" : "text-secondary group-hover:text-primary"
+                      }`}
                   >
                     {category.title}
                   </span>

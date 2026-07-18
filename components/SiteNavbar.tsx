@@ -59,7 +59,7 @@ export function SiteNavbar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium text-secondary transition-colors hover:text-primary",
+                "text-sm font-medium text-secondary transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm",
               )}
             >
               {item.label}
@@ -71,7 +71,7 @@ export function SiteNavbar() {
         <div className="hidden items-center gap-3 md:flex">
           <Link
             href="/#lead-chatbot"
-            className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+            className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer"
           >
             Book a consultation
           </Link>
@@ -79,7 +79,7 @@ export function SiteNavbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 -mr-2 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center"
+          className="md:hidden p-2 -mr-2 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center"
           onClick={() => setIsOpen(true)}
           aria-label="Open menu"
           aria-expanded={isOpen}
@@ -103,7 +103,7 @@ export function SiteNavbar() {
                 <ManasflowLogo variant="navbar" />
               </Link>
               <button
-                className="p-2 -mr-2 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="p-2 -mr-2 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center"
                 onClick={closeMenu}
                 aria-label="Close menu"
               >
@@ -118,7 +118,7 @@ export function SiteNavbar() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className="text-2xl font-heading font-medium text-primary hover:text-accent transition-colors"
+                    className="text-2xl font-heading font-medium text-primary hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
                   >
                     {item.label}
                   </Link>
@@ -127,7 +127,7 @@ export function SiteNavbar() {
                 <Link
                   href="/#lead-chatbot"
                   onClick={closeMenu}
-                  className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+                  className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer"
                 >
                   Book a consultation
                 </Link>
