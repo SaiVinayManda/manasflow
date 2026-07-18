@@ -69,12 +69,12 @@ export function SiteNavbar() {
 
         {/* Desktop CTA */}
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="#lead-chatbot"
+          <Link
+            href="/#lead-chatbot"
             className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
           >
             Book a consultation
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -124,12 +124,13 @@ export function SiteNavbar() {
                   </Link>
                 ))}
 
-                <a
-                  href="#lead-chatbot"
+                <Link
+                  href="/#lead-chatbot"
+                  onClick={closeMenu}
                   className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
                 >
                   Book a consultation
-                </a>
+                </Link>
               </nav>
             </div>
           </motion.div>
