@@ -98,5 +98,3 @@ Next step
 If your team touches invoices manually, that workflow is ready to automate today. No tech team needed, no rebuilding your accounting system, no long implementation timeline.
 
 Manasflow audits your current AP workflow at no cost as part of the initial consultation. We show you exactly where the hours are going and what the automated pipeline would look like before we build a single thing.
-
-Book your workflow audit →
