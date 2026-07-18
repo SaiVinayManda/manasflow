@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bodoni_Moda, Jost } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SiteNavbar } from "@/components/SiteNavbar";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 import "./globals.css";
 
 const bodoniModa = Bodoni_Moda({
@@ -35,6 +36,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${bodoniModa.variable} ${jost.variable} h-full antialiased`}
     >
+      <head>
+        <SchemaMarkup />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <SiteNavbar />
         {children}
