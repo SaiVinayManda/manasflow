@@ -317,7 +317,9 @@ export default function LeadChatbot() {
                   <PaperPlaneIcon className="w-[18px] h-[18px]" aria-hidden="true" />
                 </button>
               </div>
-
+              <p className="font-sans text-xs text-muted-foreground mt-3 px-1 text-left">
+                You won&rsquo;t need technical knowledge. We only ask about your workflows, not code.
+              </p>
               {/* Progress track */}
               <div className="mt-4 flex items-center gap-4">
                 <div className="flex-1 h-[2px] bg-border overflow-hidden">

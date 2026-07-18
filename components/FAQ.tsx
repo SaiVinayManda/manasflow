@@ -15,14 +15,14 @@ const faqData: FAQItem[] = [
     question: "How do I automate manual data entry between my CRM and other tools?",
     answer: (
       <>
-        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+        <p className="font-sans text-sm font-bold text-primary mb-4">
           TL;DR: We build custom AI integrations that automatically extract, transform, and route data between your existing tools.
         </p>
-        <p className="mb-4">Manasflow builds custom AI workflows that connect your CRM with other systems, automatically syncing and updating data without manual input. This eliminates the &ldquo;swivel chair&rdquo; problem by:</p>
+        <p className="mb-4">Manasflow builds custom AI workflows that connect your CRM with other systems, eliminating the &ldquo;swivel chair&rdquo; problem by:</p>
         <ul className="list-disc pl-6 space-y-2">
-          <li><strong>Extracting</strong> unstructured data from emails or PDFs.</li>
+          <li><strong>Extracting</strong> unstructured data from emails or PDFs automatically.</li>
           <li><strong>Transforming</strong> it into clean, standardized formats.</li>
-          <li><strong>Routing</strong> it instantly to your ERP, CRM, or accounting software.</li>
+          <li><strong>Routing</strong> it instantly to your ERP, CRM, or accounting software without manual input.</li>
         </ul>
       </>
     ),
@@ -32,15 +32,15 @@ const faqData: FAQItem[] = [
     question: "Can AI handle repetitive admin tasks in my business?",
     answer: (
       <>
-        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+        <p className="font-sans text-sm font-bold text-primary mb-4">
           TL;DR: Yes, our AI agents act as digital employees to handle tasks like invoice parsing, email triage, and reporting.
         </p>
-        <p className="mb-4"><strong>Yes.</strong> Manasflow creates AI agents that act like digital employees. Common automations include:</p>
+        <p className="mb-4">Manasflow creates AI agents that perform routine operations. Common automations include:</p>
         <ul className="list-disc pl-6 space-y-2">
-          <li><strong>Invoice parsing</strong> — extract line items from any PDF format.</li>
-          <li><strong>Inbox triage</strong> — classify, tag, and route emails automatically.</li>
-          <li><strong>Automated reporting</strong> — generate weekly ops reports without touching a spreadsheet.</li>
-          <li><strong>Record updates</strong> — sync data across CRM, ERP, and accounting tools silently.</li>
+          <li><strong>Invoice parsing:</strong> Extract line items from any PDF format to sync with accounting.</li>
+          <li><strong>Inbox triage:</strong> Classify, tag, and route incoming customer or vendor emails.</li>
+          <li><strong>Automated reporting:</strong> Generate weekly ops reports without touching a spreadsheet.</li>
+          <li><strong>Record updates:</strong> Keep data synced across CRM, ERP, and databases silently.</li>
         </ul>
       </>
     ),
@@ -50,10 +50,10 @@ const faqData: FAQItem[] = [
     question: "How can I use AI in my specific industry?",
     answer: (
       <>
-        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+        <p className="font-sans text-sm font-bold text-primary mb-4">
           TL;DR: We build tailored solutions for operational bottlenecks across engineering, real estate, field services, and more.
         </p>
-        <p className="mb-4">We tailor automations to your operational bottlenecks. Core use cases by sector:</p>
+        <p className="mb-4">We target specific operational bottlenecks. Core use cases by sector include:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Engineering &amp; Electrical:</strong> ECAD file conversions, BOM generation, compliance tracking.</li>
           <li><strong>Real Estate:</strong> Document extraction, pipeline phase automation, AP processing.</li>
@@ -68,16 +68,16 @@ const faqData: FAQItem[] = [
     question: "What tools do you integrate with?",
     answer: (
       <>
-        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+        <p className="font-sans text-sm font-bold text-primary mb-4">
           TL;DR: We integrate seamlessly with your existing stack, including Salesforce, QuickBooks, Zapier, and custom APIs.
         </p>
-        <p className="mb-4">We integrate with the tools your team already uses — no rip-and-replace required. Common integrations include:</p>
+        <p className="mb-4">We integrate with the tools your team already uses — no rip-and-replace required:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>CRM:</strong> Salesforce, HubSpot, Pipedrive.</li>
           <li><strong>Accounting:</strong> QuickBooks, Xero, SAP.</li>
           <li><strong>Automation platforms:</strong> Zapier, Make, n8n.</li>
           <li><strong>Communication:</strong> Slack, Microsoft Teams, Gmail.</li>
-          <li><strong>ERP &amp; Ops:</strong> Custom APIs, database connectors, and proprietary internal systems.</li>
+          <li><strong>ERP &amp; Ops:</strong> Custom APIs, database connectors, and proprietary systems.</li>
         </ul>
       </>
     ),
@@ -87,13 +87,13 @@ const faqData: FAQItem[] = [
     question: "What is a custom AI agent and how does it work?",
     answer: (
       <>
-        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+        <p className="font-sans text-sm font-bold text-primary mb-4">
           TL;DR: An AI agent is an autonomous software worker that monitors triggers, reasons through edge cases, and executes multi-step actions.
         </p>
-        <p className="mb-4">A custom AI agent is a software system built to perform specific business tasks autonomously. Manasflow builds these using <strong>OpenClaw</strong> and <strong>Hermes</strong> frameworks. A typical agent:</p>
+        <p className="mb-4">A custom AI agent is a software system built to perform specific business tasks autonomously using frameworks like OpenClaw and Hermes. A typical agent:</p>
         <ul className="list-disc pl-6 space-y-2">
-          <li><strong>Monitors</strong> a trigger (email received, form submitted, schedule).</li>
-          <li><strong>Reasons</strong> through the task, handling edge cases without human input.</li>
+          <li><strong>Monitors</strong> a trigger, such as a received email or submitted form.</li>
+          <li><strong>Reasons</strong> through the task, handling edge cases intelligently.</li>
           <li><strong>Executes</strong> multi-step actions across your connected tools.</li>
           <li><strong>Reports back</strong> with a summary or escalates only when needed.</li>
         </ul>
@@ -105,10 +105,14 @@ const faqData: FAQItem[] = [
     question: "Do I need technical knowledge to use AI automation?",
     answer: (
       <>
-        <p className="font-sans text-sm font-medium text-accent italic mb-4">
+        <p className="font-sans text-sm font-bold text-primary mb-4">
           TL;DR: Not at all; we handle the full technical build and deliver intuitive solutions that require zero coding.
         </p>
-        <p><strong>No technical background required.</strong> Manasflow handles the entire technical implementation. We deliver seamless solutions your team can use via simple interfaces (like Slack or email) or as silent background automations.</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>No technical background required.</strong></li>
+          <li>We handle the entire architecture, implementation, and deployment.</li>
+          <li>Solutions are designed to be used via simple interfaces (like Slack or email) or run silently in the background.</li>
+        </ul>
       </>
     ),
     schemaAnswer: "No. Manasflow handles the technical implementation and creates solutions your team can use through simple workflows or background automations.",
@@ -117,7 +121,14 @@ const faqData: FAQItem[] = [
     question: "What is AP pipeline automation?",
     answer: (
       <>
-        <p>AP pipeline automation replaces manual invoice entry, approval routing, and ERP syncing. Our custom AI agents extract data from emailed invoices, match them against purchase orders, and draft the payment entry for human review.</p>
+        <p className="font-sans text-sm font-bold text-primary mb-4">
+          TL;DR: AP pipeline automation replaces manual invoice entry, approval routing, and ERP syncing using custom AI agents.
+        </p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Extracts data from emailed invoices automatically.</li>
+          <li>Matches line items against your purchase orders.</li>
+          <li>Drafts the payment entry in your accounting system for quick human review.</li>
+        </ul>
       </>
     ),
     schemaAnswer: "AP pipeline automation replaces manual invoice entry, approval routing, and ERP syncing using custom AI agents to extract data, match against POs, and draft entries for human review.",
@@ -126,7 +137,14 @@ const faqData: FAQItem[] = [
     question: "What is BOM automation?",
     answer: (
       <>
-        <p>BOM (Bill of Materials) automation extracts structured component lists from complex engineering documents, like ECAD files or PDFs, and formats them directly into your inventory or quoting systems.</p>
+        <p className="font-sans text-sm font-bold text-primary mb-4">
+          TL;DR: BOM automation extracts structured component lists from complex engineering documents and formats them for your systems.
+        </p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Processes ECAD files, 2D floor plans, or PDFs using AI vision.</li>
+          <li>Extracts every material, component, and specification accurately.</li>
+          <li>Formats the data directly into your inventory, quoting, or ERP systems.</li>
+        </ul>
       </>
     ),
     schemaAnswer: "BOM automation extracts structured component lists from complex engineering documents like ECAD files or PDFs and formats them directly into inventory or quoting systems.",

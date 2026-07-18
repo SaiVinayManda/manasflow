@@ -179,6 +179,26 @@ export default function Services() {
               </div>
             </div>
           </motion.div>
+
+          {/* ── Operational Safeguards ── */}
+          <motion.div
+            variants={cardVariants}
+            className="col-span-1 md:col-span-3 mt-2 lg:mt-4 border border-border bg-muted/20 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+          >
+            <div>
+              <h3 className="font-heading text-xl font-bold text-primary mb-2">
+                Operational Safeguards
+              </h3>
+              <p className="font-sans text-sm font-light text-secondary leading-relaxed max-w-3xl">
+                <strong className="font-medium text-primary">How we handle edge cases:</strong> Agents never auto-approve critical actions without human review. We design explicit checks and escalation paths so you always remain in control.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <span className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-accent/20 bg-accent/10 text-accent font-sans text-[10px] font-bold tracking-widest uppercase">
+                Human in the loop
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -50,6 +50,16 @@ export default function Team() {
               <p>
                 <strong>How we build:</strong> We don't just patch software together; we build robust, autonomous architectures from the ground up, guaranteeing scalable systems that replace brittle human workflows with unrelenting logic.
               </p>
+              <ul className="list-none space-y-4 mt-6">
+                <li className="relative pl-6">
+                  <span className="absolute left-0 top-2.5 w-1.5 h-1.5 bg-accent rounded-full"></span>
+                  <strong>Zero Disruption:</strong> We integrate directly into your existing tools (CRM, ERP, accounting). No need to replace your current systems.
+                </li>
+                <li className="relative pl-6">
+                  <span className="absolute left-0 top-2.5 w-1.5 h-1.5 bg-accent rounded-full"></span>
+                  <strong>Team Enablement:</strong> We train your operations team on using the agents and provide full documentation.
+                </li>
+              </ul>
             </div>
           </div>
         </motion.div>

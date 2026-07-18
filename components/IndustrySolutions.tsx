@@ -1,328 +1,188 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import {
-  FileTextIcon,
-  ClipboardIcon,
-  GearIcon,
-  CubeIcon,
-  LightningBoltIcon,
-} from "@radix-ui/react-icons";
-import { cn } from "@/lib/cn";
+import { motion } from "framer-motion";
+import { Link2Icon, ArrowRightIcon, BarChartIcon, LightningBoltIcon, ChatBubbleIcon, ReaderIcon, ArchiveIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
-type SolutionItem = {
-  bottleneck: string;
-  solution: string;
-};
-
-type CategoryData = {
-  id: string;
-  title: string;
-  icon: React.ElementType;
-  items: SolutionItem[];
-};
-
-const solutionsData: CategoryData[] = [
+const solutions = [
   {
-    id: "estimating",
-    title: "Estimating & Sales",
-    icon: FileTextIcon,
+    domain: "Estimating & Sales",
     items: [
       {
-        bottleneck: "Manual BOM creation from PDFs.",
-        solution:
-          "Estimating: AI instantly translates 2D floor plans into line-by-line Bill of Materials, cross-referencing live supplier pricing to eliminate bidding delays.",
+        id: "boq",
+        title: "BOM & BOQ Takeoffs",
+        bottleneck: "Engineers spend hours manually tracing 2D floor plans to count fixtures and materials.",
+        solution: "AI vision extracts exact fixture counts and specs directly from PDFs to generate a priced Bill of Materials instantly.",
+        tag: "Estimating",
+        icon: ReaderIcon,
       },
       {
-        bottleneck: "Pricing volatility and manual supplier cross-referencing.",
-        solution:
-          "Sales: Automated bots continuously monitor supplier catalogs, dynamically adjusting your quotes to protect profit margins against sudden material cost spikes.",
+        id: "crm",
+        title: "CRM Data Entry",
+        bottleneck: "Sales reps don't update pipeline phases, leading to inaccurate forecasting and lost context.",
+        solution: "Voice-to-text agents capture meeting notes, automatically update CRM fields, and draft follow-up emails.",
+        tag: "Sales",
+        icon: ChatBubbleIcon,
       },
-      {
-        bottleneck: "Repetitive scope-of-work drafting.",
-        solution:
-          "Client Onboarding: LLMs generate comprehensive, highly-detailed scope-of-work documents automatically from rough meeting notes or transcribed discovery calls.",
-      },
-      {
-        bottleneck: "Delayed follow-ups and slow lead qualification.",
-        solution:
-          "Lead Qualification: Custom AI chatbots instantly engage prospects 24/7, aggressively pre-qualifying leads and booking consultations before competitors respond.",
-      },
-      {
-        bottleneck:
-          "Manual recalculation of parameters on design changes.",
-        solution:
-          "Design Tweaks: Intelligent workflows automatically cascade parameter recalculations (like cable lengths and conduit sizing) the second a design spec changes.",
-      },
-    ],
+    ]
   },
   {
-    id: "admin",
-    title: "Office Administration",
-    icon: ClipboardIcon,
+    domain: "Office Administration",
     items: [
       {
-        bottleneck: "The \"swivel chair\" problem across CRM, ERP, and accounting.",
-        solution:
-          "System Sync: Background AI agents act as the missing bridge between your disconnected software, eliminating manual data entry across platforms.",
+        id: "ap-automation",
+        title: "Accounts Payable",
+        bottleneck: "Invoices arrive in dozens of formats, requiring manual transcription into the accounting system.",
+        solution: "Agents ingest inbox attachments, extract line items, match against POs, and sync directly to QuickBooks or Xero.",
+        tag: "Accounting",
+        icon: ArchiveIcon,
       },
       {
-        bottleneck: "Unstructured PDF invoice extraction.",
-        solution:
-          "Invoicing: Vision-language models intelligently extract line items from messy, unstructured PDF invoices, pushing pristine data straight into your accounting ledger.",
+        id: "reporting",
+        title: "Operations Reporting",
+        bottleneck: "Managers waste Friday afternoons aggregating data from 5 different tools to build weekly reports.",
+        solution: "Scheduled autonomous scripts pull live data from all APIs, run analytics, and drop a formatted summary in Slack.",
+        tag: "Reporting",
+        icon: BarChartIcon,
       },
-      {
-        bottleneck: "Email triage and routing.",
-        solution:
-          "Inbox Management: Natural language processing classifies, tags, and routes incoming operational emails to the correct department instantly, stripping out noise.",
-      },
-      {
-        bottleneck: "Digitizing field notes.",
-        solution:
-          "Field-to-Office: Transcription bots convert rushed, messy voice memos from technicians into structured text, instantly updating the central CRM records.",
-      },
-      {
-        bottleneck: "Payroll reconciliation against project hours.",
-        solution:
-          "Payroll: Logic engines cross-reference timesheets against GPS pings and project hours, automatically surfacing anomalies for review before payroll runs.",
-      },
-    ],
+    ]
   },
   {
-    id: "field",
-    title: "Field Service Execution",
-    icon: GearIcon,
+    domain: "Field Service",
     items: [
       {
-        bottleneck: "Digging through massive PDF manuals for schematics/error codes.",
-        solution:
-          "Knowledge Retrieval: RAG-powered data systems allow field technicians to query massive PDF equipment manuals via natural chat, surfacing exact schematics instantly.",
+        id: "dispatch",
+        title: "Dispatch & Routing",
+        bottleneck: "Coordinators struggle to match technician skills with incoming emergency tickets efficiently.",
+        solution: "AI triages incoming tickets by priority and requirement, auto-drafting optimal daily schedules for field teams.",
+        tag: "Operations",
+        icon: LightningBoltIcon,
       },
       {
-        bottleneck: "Blind dispatching without factoring certifications or truck tools.",
-        solution:
-          "Dispatch: Algorithmic routing pairs the exact job requirements against technician certifications, current location, and truck inventory, eliminating wasted trips.",
+        id: "compliance",
+        title: "Compliance Checking",
+        bottleneck: "Manually cross-referencing completed work orders against safety checklists causes delays.",
+        solution: "Automated workflows instantly audit submitted field forms against compliance databases, flagging only missing data.",
+        tag: "Compliance",
+        icon: Link2Icon,
       },
-      {
-        bottleneck: "Missing service history on site.",
-        solution:
-          "Context: Automated pre-arrival briefs text technicians the entire equipment service history and previous parts used before they pull into the driveway.",
-      },
-      {
-        bottleneck: "Tedious post-service compliance reports.",
-        solution:
-          "Reporting: Voice-to-text AI structures technician field narratives into perfectly formatted compliance reports the moment they jump back in the truck.",
-      },
-      {
-        bottleneck: "Language barriers on technical documents.",
-        solution:
-          "Documentation: Instant, highly-accurate AI translation converts manufacturer specifications into the technician's native language on the fly.",
-      },
-    ],
-  },
-  {
-    id: "supply",
-    title: "Supply Chain Management",
-    icon: CubeIcon,
-    items: [
-      {
-        bottleneck: "Reactive reordering causing delays.",
-        solution:
-          "Purchasing: Predictive AI monitors your current burn rate and upcoming project pipelines, triggering purchase orders before you hit stockouts.",
-      },
-      {
-        bottleneck: "Missing specialized assets/tools across sites.",
-        solution:
-          "Asset Tracking: Automated workflows track high-value specialized tools across sites, instantly notifying project managers of equipment hoarding.",
-      },
-      {
-        bottleneck: "Subcontractor delivery miscommunications.",
-        solution:
-          "Logistics: SMS bots automatically ping subcontractors for delivery confirmations, updating the central project timeline without anyone making a phone call.",
-      },
-      {
-        bottleneck: "Manual inventory reconciliation.",
-        solution:
-          "Auditing: AI agents cross-reference warehouse intake receipts against original POs, instantly flagging discrepancies in quantity or pricing.",
-      },
-      {
-        bottleneck: "Manual WIP spreadsheet updates.",
-        solution:
-          "Visibility: Real-time API integrations feed a live master dashboard, replacing fragile, manually-updated Work-in-Progress spreadsheets entirely.",
-      },
-    ],
-  },
-  {
-    id: "engineering",
-    title: "Engineering & Compliance",
-    icon: LightningBoltIcon,
-    items: [
-      {
-        bottleneck: "Invisible manual labor tracking.",
-        solution:
-          "Labor Tracking: Automated badge-scanning and digital workflows track exact labor hours per production phase, exposing hidden inefficiencies.",
-      },
-      {
-        bottleneck: "Reactive instead of predictive maintenance.",
-        solution:
-          "Preventative Maintenance: IoT and AI integrations monitor equipment performance anomalies, scheduling maintenance windows before catastrophic failures occur.",
-      },
-      {
-        bottleneck: "Siloed handoffs causing lost specs.",
-        solution:
-          "Project Handoffs: Intelligent automation instantly generates and distributes standardized spec sheets to the production floor the moment a design is approved.",
-      },
-      {
-        bottleneck: "Compliance tracking via chaotic spreadsheets.",
-        solution:
-          "Compliance: AI continuously monitors incoming regulatory updates and cross-references them against your active production SOPs, flagging necessary adjustments.",
-      },
-      {
-        bottleneck: "Manual redrawing of electrical layouts on component changes.",
-        solution:
-          "Engineering Updates: Parametric design scripts automatically cascade component swaps throughout the entire layout, eliminating tedious manual redrawing.",
-      },
-    ],
-  },
+    ]
+  }
 ];
 
-const SolutionCard = ({ item }: { item: SolutionItem }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1 },
+  },
+};
 
-  return (
-    <div className="border border-border bg-on-primary p-6 md:p-8 lg:p-10 flex flex-col gap-4 group hover:border-accent/50 transition-colors duration-300">
-      <div className="flex items-start gap-4">
-        <span className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-destructive/80" />
-        <div>
-          <p className="font-sans text-xs font-semibold tracking-widest uppercase text-secondary mb-2">
-            The Bottleneck
-          </p>
-          <p className="font-sans text-base md:text-lg font-light text-primary leading-relaxed">
-            {item.bottleneck}
-          </p>
-        </div>
-      </div>
-
-      <div className="w-full h-px bg-border/50 my-2" />
-
-      <div className="flex items-start gap-4">
-        <span className="flex-shrink-0 w-2 h-2 mt-2.5 rounded-full bg-accent" />
-        <div className="flex-1">
-          <p className="font-sans text-xs font-semibold tracking-widest uppercase text-accent mb-2">
-            Manasflow AI Solution
-          </p>
-          <p className={cn("font-sans text-base md:text-lg font-medium text-primary leading-relaxed", !isExpanded && "line-clamp-3 md:line-clamp-none")}>
-            {item.solution}
-          </p>
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-2 text-sm font-medium text-accent md:hidden hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
-          >
-            {isExpanded ? "Read less" : "Read more"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
 };
 
 export default function IndustrySolutions() {
-  const [activeTab, setActiveTab] = useState<string>(solutionsData[0].id);
-  const shouldReduceMotion = useReducedMotion();
-
-  const activeCategory =
-    solutionsData.find((cat) => cat.id === activeTab) || solutionsData[0];
-
   return (
-    <section id="industries" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-background border-t border-border scroll-mt-20">
+    <section id="industries" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-20 bg-muted/30 scroll-mt-20">
       <div className="max-w-[1440px] mx-auto">
-        {/* ── Header ── */}
-        <div className="mb-16 lg:mb-24">
-          <p className="font-sans text-sm font-medium tracking-[0.2em] uppercase text-accent mb-6">
-            Industry Solutions
-          </p>
-          <h2
-            className="font-heading font-bold text-primary leading-[1.05]"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
+        <div className="mb-16 lg:mb-24 max-w-3xl">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-sans text-sm font-medium tracking-[0.2em] uppercase text-accent mb-6"
           >
-            Built for operations.
-            <br />
-            Tailored to your sector.
-          </h2>
-          <p className="font-sans text-base lg:text-lg font-light text-secondary leading-relaxed mt-5 max-w-2xl">
-            Here are typical bottlenecks we fix for construction, MEP, real estate, and operations teams.
-          </p>
-        </div>
-
-        {/* ── Layout ── */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
-          {/* ── Sidebar Tabs ── */}
-          <div className="w-full lg:w-1/3 lg:sticky lg:top-32 flex flex-col gap-2">
-            {solutionsData.map((category) => {
-              const isActive = activeTab === category.id;
-              const Icon = category.icon;
-
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveTab(category.id)}
-                  className={`group flex items-center gap-4 w-full text-left px-6 py-5 border-l-2 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${isActive
-                      ? "border-accent bg-on-primary shadow-sm"
-                      : "border-transparent hover:border-border hover:bg-muted/50"
-                    }`}
-                  aria-pressed={isActive}
-                >
-                  <Icon
-                    aria-hidden="true"
-                    className={`w-5 h-5 transition-colors duration-300 ${isActive ? "text-accent" : "text-secondary group-hover:text-primary"
-                      }`}
-                  />
-                  <span
-                    className={`font-sans font-medium text-base tracking-wide transition-colors duration-300 ${isActive ? "text-primary" : "text-secondary group-hover:text-primary"
-                      }`}
-                  >
-                    {category.title}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* ── Content Area ── */}
-          <div className="w-full lg:w-2/3 min-h-[500px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -15 }}
-                transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: [0.25, 0.1, 0.25, 1] as const }}
-                className="flex flex-col gap-6"
-              >
-                {activeCategory.items.map((item, idx) => (
-                  <SolutionCard key={idx} item={item} />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* ── Edge-case routing ── */}
-        <div className="mt-16 lg:mt-20 flex items-center gap-3">
-          <div className="flex-1 h-px bg-border/40" />
-          <a
-            href="mailto:info@manasflow.com"
-            className="font-sans text-sm font-light text-secondary/60 hover:text-accent transition-colors duration-200 whitespace-nowrap"
+            Sectors & Use Cases
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-heading font-bold text-primary leading-[1.05] mb-6"
+            style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
           >
-            Don&rsquo;t see your sector?{" "}
-            <span className="font-medium underline underline-offset-4">
-              Contact us
-            </span>{" "}
-            &rarr;
-          </a>
-          <div className="flex-1 h-px bg-border/40" />
+            Fixing operational bottlenecks.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-sans text-lg lg:text-xl font-light leading-relaxed text-secondary"
+          >
+            We focus on operations-heavy businesses in construction, MEP, real estate, engineering, and field-service organizations. Here are typical bottlenecks we resolve.
+          </motion.p>
         </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16"
+        >
+          {solutions.map((domain) => (
+            <div key={domain.domain} className="flex flex-col gap-8">
+              <h3 className="font-heading text-2xl font-bold text-primary border-b border-border pb-4">
+                {domain.domain}
+              </h3>
+              
+              <div className="flex flex-col gap-10">
+                {domain.items.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div key={item.id} variants={itemVariants} className="group flex flex-col gap-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <Icon className="w-5 h-5 text-accent" />
+                          <h4 className="font-sans font-bold text-lg text-primary">{item.title}</h4>
+                        </div>
+                        <span className="px-2 py-1 text-[10px] font-semibold uppercase tracking-wider bg-background border border-border text-secondary rounded-full">
+                          {item.tag}
+                        </span>
+                      </div>
+                      
+                      <div className="flex flex-col gap-3 pl-8 border-l border-border/50">
+                        <p className="font-sans text-sm font-medium text-secondary">
+                          <span className="text-muted-foreground mr-2">Problem:</span>
+                          {item.bottleneck}
+                        </p>
+                        <p className="font-sans text-sm font-light text-primary bg-background/50 p-4 rounded-sm border border-border/30">
+                          <span className="font-medium text-accent block mb-1">Solution:</span>
+                          {item.solution}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* ── Routing Link ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-20 pt-8 border-t border-border"
+        >
+          <Link
+            href="/#lead-chatbot"
+            className="group inline-flex items-center gap-2 font-sans text-sm font-medium text-secondary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded-sm"
+          >
+            Don&rsquo;t see your specific use case? Describe your workflow to our agent
+            <ArrowRightIcon className="w-4 h-4 text-accent transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

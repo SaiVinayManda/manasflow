@@ -129,19 +129,19 @@ export default function Hero() {
 
               <motion.div variants={fadeIn} className="flex flex-col gap-3">
                 {/* CTA group */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-2">
                   <a
                     href="#lead-chatbot"
-                    className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer"
+                    className="group inline-flex items-center justify-center gap-3 bg-accent text-on-primary font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300 ease-out hover:bg-accent/90 hover:scale-[1.02] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer"
                   >
-                    Book a consultation
+                    Start here
                     <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                   </a>
                   <a
                     href="#industries"
-                    className="inline-flex items-center justify-center gap-2 font-sans font-medium text-sm tracking-wide text-primary px-8 py-4 border border-border transition-all duration-300 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer"
+                    className="inline-flex items-center gap-1.5 font-sans font-medium text-sm tracking-wide text-secondary hover:text-primary transition-colors duration-300 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
                   >
-                    Solutions
+                    Explore solutions
                   </a>
                 </div>
 
