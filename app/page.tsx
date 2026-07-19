@@ -6,10 +6,8 @@ import ProcessTimeline from "@/components/ProcessTimeline";
 import Services from "@/components/Services";
 import IndustrySolutions from "@/components/IndustrySolutions";
 import ROICalculator from "@/components/ROICalculator";
-import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import LeadMagnet from "@/components/LeadMagnet";
-import SecurityCompliance from "@/components/SecurityCompliance";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
@@ -45,10 +43,8 @@ export default function Home() {
       <Services />
       <IndustrySolutions />
       <ROICalculator />
-      <Team />
       <Testimonials />
       <LeadMagnet />
-      <SecurityCompliance />
       <FAQ />
       <Footer />
     </main>

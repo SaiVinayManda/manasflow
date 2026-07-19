@@ -149,6 +149,22 @@ const faqData: FAQItem[] = [
     ),
     schemaAnswer: "BOM automation extracts structured component lists from complex engineering documents like ECAD files or PDFs and formats them directly into inventory or quoting systems.",
   },
+  {
+    question: "How do you ensure data security and compliance?",
+    answer: (
+      <>
+        <p className="font-sans text-sm font-bold text-primary mb-4">
+          TL;DR: We use zero-retention LLM APIs and SOC2 compliant infrastructure. Your data is encrypted and never used for model training.
+        </p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>Zero-Retention APIs:</strong> Your data is never stored beyond the request lifecycle or used to train any public models.</li>
+          <li><strong>Enterprise Security:</strong> All data is encrypted via TLS 1.3 in transit and AES-256 at rest on secure servers.</li>
+          <li><strong>Compliance:</strong> Our systems are built to SOC2 Type II standards and we provide GDPR Article 28 compliant DPAs.</li>
+        </ul>
+      </>
+    ),
+    schemaAnswer: "Manasflow ensures data security through zero-retention LLM APIs, SOC2 Type II compliant infrastructure, and TLS 1.3 encryption. Your data is never used to train models.",
+  },
 ];
 
 export default function FAQ() {
