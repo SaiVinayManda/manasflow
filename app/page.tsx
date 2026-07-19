@@ -45,7 +45,7 @@ export default function Home() {
       <ROICalculator />
       <Testimonials />
       <LeadMagnet />
-      <FAQ />
+      <FAQ isCompact={true} />
       <Footer />
     </main>
   );
